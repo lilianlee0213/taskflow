@@ -16,6 +16,8 @@
   --color-topbar-border: #e5e7eb;     /* gray-200 */
   --color-topbar-text: #64748b	;       /* slate-500 */
   --color-topbar-text-hover: #000000;      
+
+  --color-secondary:#1a202c;
 }
 
 .dark {
