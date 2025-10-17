@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-taskflow-dev-38d8d-authRole",
+      "UnauthRoleArn": "arn:aws:iam::880999484691:role/amplify-taskflow-dev-38d8d-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::880999484691:role/amplify-taskflow-dev-38d8d-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-taskflow-dev-38d8d-deployment",
+      "UnauthRoleName": "amplify-taskflow-dev-38d8d-unauthRole",
+      "StackName": "amplify-taskflow-dev-38d8d",
+      "StackId": "arn:aws:cloudformation:us-east-1:880999484691:stack/amplify-taskflow-dev-38d8d/d0513540-aba2-11f0-bd8c-12da9a8c379d",
+      "AmplifyAppId": "d1taaqx2bkop8i"
+    },
+    "categories": {
+      "auth": {
+        "taskflow5bc84678": {}
+      }
+    }
+  }
+}
