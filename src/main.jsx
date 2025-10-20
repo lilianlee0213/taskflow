@@ -1,28 +1,61 @@
-import {StrictMode} from 'react';
+// src/main.jsx
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+const savedTheme = localStorage.getItem('theme');
+
+const applyTheme = (forceDark) => {
+	const root = document.documentElement;
+	const useDark =
+		typeof forceDark === 'boolean'
+			? forceDark
+			: savedTheme === 'dark' || (!savedTheme && prefersDark.matches);
+
+	if (useDark) {
+		root.classList.add('dark');
+	} else {
+		root.classList.remove('dark');
+		if (!root.classList.length) root.removeAttribute('class');
+	}
+};
+
+// ✅ 초기 적용
+applyTheme();
+
+import {StrictMode, useEffect, useState} from 'react';
 import {createRoot} from 'react-dom/client';
-import './index.css';
-import App from './App.jsx';
-import {createTheme, ThemeProvider} from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
+import {ThemeProvider, CssBaseline} from '@mui/material';
+import {lightTheme, darkTheme} from './theme';
 import ToastProvider from './components/ui/ToastProvider.jsx';
 import AuthProvider from './components/auth/AuthProvider.jsx';
+import App from './App.jsx';
+import './index.css';
 
-const theme = createTheme({
-	typography: {
-		fontFamily: `'Inter', sans-serif`, // Tailwind와 동일한 폰트
-	},
-	palette: {
-		primary: {
-			main: '#f97316', // var(--color-primary)
-			light: '#fdba74', // var(--color-primary-light)
-			dark: '#ea580c', // var(--color-primary-dark)
-			contrastText: '#fff',
-		},
-	},
-});
-createRoot(document.getElementById('root')).render(
-	<StrictMode>
-		<ThemeProvider theme={theme}>
+function ThemedApp() {
+	const [isDark, setIsDark] = useState(
+		document.documentElement.classList.contains('dark')
+	);
+
+	useEffect(() => {
+		const observer = new MutationObserver(() => {
+			setIsDark(document.documentElement.classList.contains('dark'));
+		});
+		observer.observe(document.documentElement, {attributes: true});
+
+		const handleSystemChange = (e) => {
+			if (!localStorage.getItem('theme')) {
+				applyTheme(e.matches);
+				setIsDark(e.matches);
+			}
+		};
+		prefersDark.addEventListener('change', handleSystemChange);
+
+		return () => {
+			observer.disconnect();
+			prefersDark.removeEventListener('change', handleSystemChange);
+		};
+	}, []);
+
+	return (
+		<ThemeProvider theme={isDark ? darkTheme : lightTheme}>
 			<CssBaseline />
 			<ToastProvider>
 				<AuthProvider>
@@ -30,5 +63,5 @@ createRoot(document.getElementById('root')).render(
 				</AuthProvider>
 			</ToastProvider>
 		</ThemeProvider>
-	</StrictMode>
-);
+	);
+}

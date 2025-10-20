@@ -46,9 +46,9 @@ const Sidebar = ({darkMode}) => {
 
 	return (
 		<div
-			className={`h-screen ${
+			className={`h-screen bg-sidebar border-r border-border ${
 				isCollapsed ? 'w-20' : 'w-64'
-			} bg-sidebar-bg text-sidebar-text flex flex-col justify-between p-4 shadow-lg relative z-20 transition-all duration-200`}>
+			} flex flex-col justify-between p-4 shadow-lg relative z-20 transition-all duration-200`}>
 			<div>
 				{/* Logo / Title */}
 				<div className="relative flex items-center justify-between mb-6">
@@ -60,11 +60,7 @@ const Sidebar = ({darkMode}) => {
 								letterSpacing={2}
 								py={0.5}
 								fontWeight={600}
-								sx={{
-									color: darkMode ? 'white' : '#111827',
-									paddingY: '2px',
-								}}>
-								{' '}
+								className="text-text">
 								TaskFlow
 							</Typography>
 						</div>
@@ -75,7 +71,7 @@ const Sidebar = ({darkMode}) => {
 					)}
 					<button
 						onClick={() => setIsCollapsed((prev) => !prev)}
-						className="absolute -right-8 top-0.5 p-1 text-sidebar-text hover:text-primary cursor-pointer">
+						className="absolute -right-8 top-0.5 p-1 text-text hover:text-primary cursor-pointer">
 						{isCollapsed ? (
 							<div className="flex items-center p-1 rounded-full bg-primary text-white font-bold">
 								<KeyboardArrowRightIcon sx={{fontSize: 'medium'}} />
@@ -98,7 +94,7 @@ const Sidebar = ({darkMode}) => {
 								`flex items-center gap-3 px-3 py-2 rounded-md font-medium transition-all duration-200 ${
 									isActive
 										? 'bg-primary text-white'
-										: 'hover:bg-sidebar-hover hover:text-sidebar-text'
+										: 'hover:bg-sidebar-hover text-text'
 								}`
 							}>
 							{icon}

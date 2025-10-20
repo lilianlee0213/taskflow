@@ -1,4 +1,3 @@
-// src/components/Topbar.jsx
 import {
 	MagnifyingGlassIcon,
 	BellIcon,
@@ -8,7 +7,7 @@ import InputField from './ui/InputField';
 
 const Topbar = () => {
 	return (
-		<header className="bg-topbar-bg border-b border-topbar-border text-topbar-text flex items-center justify-between px-6 py-2 shadow-sx relative z-10">
+		<header className="bg-card border-b border-b-border flex items-center justify-between px-6 py-2 shadow-sx relative z-10">
 			{/* Search */}
 			<InputField type="search" placeholder="Search..." />
 			{/* Right Icons */}

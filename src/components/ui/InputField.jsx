@@ -37,16 +37,19 @@ const InputField = ({
 }) => {
 	const [showPw, setShowPw] = useState(false);
 
-	// 기본 아이콘 매핑
 	const renderIcon = () => {
 		if (customIcon) return customIcon;
 		switch (type) {
 			case 'search':
-				return <MagnifyingGlassIcon className="h-6 w-6 opacity-70 mb-0.5" />;
+				return (
+					<MagnifyingGlassIcon className="h-6 w-6 mb-0.5 text-placeholder opacity-80" />
+				);
 			case 'email':
-				return <EnvelopeIcon className="h-6 w-6 opacity-70" />;
+				return <EnvelopeIcon className="h-6 w-6 text-placeholder opacity-80" />;
 			case 'password':
-				return <LockClosedIcon className="h-6 w-6 opacity-70" />;
+				return (
+					<LockClosedIcon className="h-6 w-6 text-placeholder opacity-80" />
+				);
 			default:
 				return null;
 		}
@@ -58,27 +61,27 @@ const InputField = ({
 				onClick={() => setShowPw((prev) => !prev)}
 				edge="end"
 				size="small"
-				sx={{color: 'inherit'}}>
+				sx={{
+					color: 'var(--color-placeholder)',
+					opacity: 1,
+				}}>
 				{showPw ? (
-					<EyeSlashIcon className="h-5 w-5 opacity-70" />
+					<EyeSlashIcon className="h-5 w-5" />
 				) : (
-					<EyeIcon className="h-5 w-5 opacity-70" />
+					<EyeIcon className="h-5 w-5" />
 				)}
 			</IconButton>
 		) : null;
 
-	// 상태별 색상 (Tailwind 변수 기반)
-	const borderColor = error
-		? 'var(--color-error, #dc2626)' // red-600 fallback
-		: 'rgba(100,116,139,0.25)'; // slate-400 default
+	const borderColor = error ? 'var(--color-error)' : 'rgba(100,116,139,0.25)'; // slate-400 기본
 
 	const hoverBorderColor = error
-		? 'var(--color-error, #dc2626)'
-		: 'var(--color-secondary, #fdba74)';
+		? 'var(--color-error)'
+		: 'var(--color-primary-light)';
 
 	const focusBorderColor = error
-		? 'var(--color-error, #dc2626)'
-		: 'var(--color-secondary, #f97316)';
+		? 'var(--color-error)'
+		: 'var(--color-primary)';
 
 	const disabledBg = 'rgba(241,245,249,0.5)'; // slate-100 with opacity
 
@@ -96,7 +99,7 @@ const InputField = ({
 					bgcolor: disabled ? disabledBg : 'transparent',
 					color: disabled
 						? 'rgba(148,163,184,0.8)' // slate-400
-						: 'var(--color-sidebar-text)',
+						: 'var(--color-text-muted)',
 					transition: 'all 0.2s ease',
 					'&:hover': {
 						borderColor: hoverBorderColor,
@@ -117,9 +120,9 @@ const InputField = ({
 					value={value}
 					onChange={onChange}
 					sx={{
-						color: 'inherit',
-						'& input::placeholder': {
-							opacity: 0.6,
+						'& .MuiInputBase-input::placeholder': {
+							color: 'var(--color-placeholder)',
+							opacity: 0.8,
 						},
 						fontSize: '0.95rem',
 					}}

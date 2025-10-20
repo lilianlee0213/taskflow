@@ -1,36 +1,67 @@
 @import "tailwindcss";
-
 @theme {
   --font-base: 'Inter', sans-serif;
 
+ /* === LIGHT THEME === */
+  --color-page: #f8fafc;
+  --color-card: #ffffff;
+  --color-sidebar: #f1f5f9;
+  --color-border: #e5e7eb;
+  --color-text: #181818;
+  --color-text-muted: #64748b;
+  --color-placeholder: #94a3b8; /* slate-400 */
 
+  /* 🎨 Brand */
   --color-primary: #f97316;
-  --color-primary-light: #fdba74;
+  --color-primary-light: #fb923c;
   --color-primary-dark: #ea580c;
 
-  --color-sidebar-bg: #f9fafb;        /* slate-50 */
-  --color-sidebar-text: #1f2937;      /* slate-800 */
-  --color-sidebar-hover: #f1f5f9;     /* slate-100 */
-
-  --color-topbar-bg: #ffffff;         /* white */
-  --color-topbar-border: #e5e7eb;     /* gray-200 */
-  --color-topbar-text: #64748b	;       /* slate-500 */
-  --color-topbar-text-hover: #000000;      
-
-  --color-secondary:#1a202c;
+  /* ✅ Status */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #dc2626; /* 🔸 red-600: 약간 더 선명하게 */
 }
-
+/* === DARK THEME === */
 .dark {
-  --color-primary: #ff8c00;
-  --color-primary-light: #ffb347;
-  --color-primary-dark: #cc7000;
+  /* 🌚 Base Colors */
+  --color-page: #212121;       /* neutral-900 — 거의 블루기 없는 진한 그레이 */
+  --color-card: #2F2F2F;       /* ChatGPT 톤과 유사한 neutral-850 */
+  --color-sidebar: #181818;    /* ChatGPT-style sidebar background */
+  --color-border: #2d2d2f;        /* subtle border for contrast */
+  --color-text: #F4F4F5;          /* neutral-100 */
+  --color-text-muted: #A1A1AA;    /* neutral-400 */
+  --color-placeholder: #9ca3af; /* neutral-400~500 사이 */
 
-  --color-sidebar-bg: #1a202c;       /* slate-900 */
-  --color-sidebar-text: #e2e8f0;     /* slate-200 */
-  --color-sidebar-hover: #2d3748;    /* slate-800 */
 
-  --color-topbar-bg: #111827;        /* gray-900 */
-  --color-topbar-border: #1f2937;    /* slate-900 */
-  --color-topbar-text: #cbd5e1;      /* slate-300 */
-  --color-topbar-text-hover: #ffffff;      
+  /* 🎨 Brand */
+  --color-primary: #fb923c;       /* 유지: 따뜻한 오렌지 포인트 */
+  --color-primary-light: #fdba74;
+  --color-primary-dark: #f97316;
+
+  /* ✅ Status */
+  --color-success: #34d399;       /* emerald-400 */
+  --color-warning: #fbbf24;       /* amber-400 */
+  --color-error: #ef4444; /* ✅ red-500: 더 선명, 대비 좋음 */
+}
+/* :root { color-scheme: light dark; }
+html, body, #root { height:100%; }
+body {
+  font-family: var(--font-base);
+  background: var(--color-page);
+  color: var(--color-text);
+} */
+
+
+/* MUI Variantion */
+.dark .MuiAlert-colorError {
+  background-color: transparent !important;
+  border: 1px solid var(--color-error) !important;
+}
+.dark .MuiAlert-colorSuccess {
+  background-color: transparent !important;
+  border: 1px solid var(--color-success) !important;
+}
+.dark .MuiAlert-colorWarning{
+  background-color: transparent !important;
+  border: 1px solid var(--color-warning) !important;
 }

@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useState, useEffect} from 'react';
 import {
 	BrowserRouter as Router,
 	Routes,
@@ -15,17 +15,29 @@ import Tasks from './pages/Tasks';
 import TimeLogs from './pages/TimeLogs';
 import Team from './pages/Team';
 import Settings from './pages/Settings';
-import './index.css';
 import ProtectedRoute from './components/auth/ProjectedRoute';
-import logo from './assets/logo_square_light.png';
-import {Typography} from '@mui/material';
+import './index.css';
 
 function AppContent() {
-	const [darkMode, setDarkMode] = useState(false);
-	const location = useLocation(); // ✅ Router 내부에서만 쓸 수 있음!
+	const [darkMode, setDarkMode] = useState(
+		document.documentElement.classList.contains('dark')
+	);
+	const location = useLocation();
 
 	useEffect(() => {
-		document.documentElement.classList.toggle('dark', darkMode);
+		const root = document.documentElement;
+
+		if (darkMode) {
+			root.classList.add('dark');
+		} else {
+			root.classList.remove('dark');
+			if (!root.classList.length) root.removeAttribute('class');
+		}
+
+		const hasUserSetTheme = localStorage.getItem('theme') !== null;
+		if (hasUserSetTheme) {
+			localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+		}
 	}, [darkMode]);
 
 	const publicPages = ['/login', '/signup', '/forgot-password'];
@@ -38,7 +50,7 @@ function AppContent() {
 				{!isPublic && <Topbar />}
 
 				<main
-					className={`${
+					className={`bg-page ${
 						isPublic
 							? 'w-full h-full flex items-center justify-center'
 							: 'flex-1 overflow-auto p-6'
@@ -47,14 +59,6 @@ function AppContent() {
 						<Route path="/login" element={<Login />} />
 						<Route
 							path="/"
-							element={
-								<ProtectedRoute>
-									<Dashboard />
-								</ProtectedRoute>
-							}
-						/>
-						<Route
-							path="/dashboard"
 							element={
 								<ProtectedRoute>
 									<Dashboard />
