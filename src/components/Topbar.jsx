@@ -4,12 +4,15 @@ import {
 	ChevronDownIcon,
 } from '@heroicons/react/24/outline';
 import InputField from './ui/InputField';
+import {Typography} from '@mui/material';
 
 const Topbar = () => {
 	return (
-		<header className="bg-card border-b border-b-border flex items-center justify-between px-6 py-2 shadow-sx relative z-10">
+		<header className="bg-card border-b border-b-border flex items-center justify-between px-6 h-16 shadow-sx relative z-10">
 			{/* Search */}
-			<InputField type="search" placeholder="Search..." />
+			<div className="w-2/5">
+				<InputField type="search" placeholder="Search..." />
+			</div>
 			{/* Right Icons */}
 			<div className="flex items-center gap-6">
 				<button
@@ -28,7 +31,7 @@ const Topbar = () => {
 							alt="User Avatar"
 							className="w-8 h-8 rounded-full object-cover"
 						/>
-						<h2 className="font-semibolds">Lilian Lee</h2>
+						<Typography variant="h6">Lilian Lee</Typography>
 						<ChevronDownIcon className="h-5 w-5" />
 					</div>
 				</button>

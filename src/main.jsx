@@ -65,3 +65,16 @@ function ThemedApp() {
 		</ThemeProvider>
 	);
 }
+
+const rootElement = document.getElementById('root');
+let root = rootElement._reactRootContainer;
+
+if (!root) {
+	root = createRoot(rootElement);
+}
+
+root.render(
+	<StrictMode>
+		<ThemedApp />
+	</StrictMode>
+);

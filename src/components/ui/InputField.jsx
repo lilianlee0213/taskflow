@@ -45,10 +45,12 @@ const InputField = ({
 					<MagnifyingGlassIcon className="h-6 w-6 mb-0.5 text-placeholder opacity-80" />
 				);
 			case 'email':
-				return <EnvelopeIcon className="h-6 w-6 text-placeholder opacity-80" />;
+				return (
+					<EnvelopeIcon className="h-6 w-6 mb-0.5 text-placeholder opacity-80" />
+				);
 			case 'password':
 				return (
-					<LockClosedIcon className="h-6 w-6 text-placeholder opacity-80" />
+					<LockClosedIcon className="h-6 w-6 mb-0.5 text-placeholder opacity-80" />
 				);
 			default:
 				return null;
@@ -92,7 +94,7 @@ const InputField = ({
 					display: 'flex',
 					alignItems: 'center',
 					gap: 1,
-					py: 1,
+					py: 0.5,
 					borderBottom: `1px solid ${
 						type === 'search' ? 'transparent' : borderColor
 					}`,
@@ -112,6 +114,7 @@ const InputField = ({
 				{...props}>
 				{renderIcon()}
 				<InputBase
+					size="small"
 					fullWidth
 					disabled={disabled}
 					id={id}
@@ -124,7 +127,6 @@ const InputField = ({
 							color: 'var(--color-placeholder)',
 							opacity: 0.8,
 						},
-						fontSize: '0.95rem',
 					}}
 				/>
 				{endAdornment}

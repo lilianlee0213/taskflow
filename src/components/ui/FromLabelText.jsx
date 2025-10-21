@@ -11,7 +11,6 @@ export default function FormLabelText({htmlFor, children, sx = {}}) {
 				mb: 0.5,
 				color: 'var(--color-primary)',
 				fontWeight: 800,
-				fontSize: '0.75rem',
 				display: 'block',
 				transition: 'color 0.2s ease',
 				'&.Mui-focused': {
