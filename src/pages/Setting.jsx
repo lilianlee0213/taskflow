@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Settings = ({darkMode, setDarkMode}) => {
+const Setting = ({darkMode, setDarkMode}) => {
 	return (
 		<div>
 			<h2 className="text-2xl font-bold mb-4">Settings</h2>
@@ -15,4 +15,4 @@ const Settings = ({darkMode, setDarkMode}) => {
 		</div>
 	);
 };
-export default Settings;
+export default Setting;

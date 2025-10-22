@@ -14,7 +14,7 @@ import ProjectDetail from './pages/ProjectDetail';
 import Tasks from './pages/Tasks';
 import TimeLogs from './pages/TimeLogs';
 import Team from './pages/Team';
-import Settings from './pages/Settings';
+import Setting from './pages/Setting';
 import ProtectedRoute from './components/auth/ProjectedRoute';
 import './index.css';
 
@@ -47,13 +47,13 @@ function AppContent() {
 		<div className="flex h-screen overflow-hidden">
 			{!isPublic && <Sidebar darkMode={darkMode} />}
 			<div className="flex flex-col flex-1">
-				{!isPublic && <Topbar />}
+				{/* {!isPublic && <Topbar />} */}
 
 				<main
 					className={`bg-page ${
 						isPublic
 							? 'w-full h-full flex items-center justify-center'
-							: 'flex-1 overflow-auto p-6'
+							: 'flex-1 overflow-auto p-8'
 					}`}>
 					<Routes>
 						<Route path="/login" element={<Login />} />
@@ -106,10 +106,10 @@ function AppContent() {
 							}
 						/>
 						<Route
-							path="/settings"
+							path="/setting"
 							element={
 								<ProtectedRoute>
-									<Settings darkMode={darkMode} setDarkMode={setDarkMode} />
+									<Setting darkMode={darkMode} setDarkMode={setDarkMode} />
 								</ProtectedRoute>
 							}
 						/>

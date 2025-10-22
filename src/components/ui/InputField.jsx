@@ -95,9 +95,7 @@ const InputField = ({
 					alignItems: 'center',
 					gap: 1,
 					py: 0.5,
-					borderBottom: `1px solid ${
-						type === 'search' ? 'transparent' : borderColor
-					}`,
+					borderBottom: `1px solid ${borderColor}`,
 					bgcolor: disabled ? disabledBg : 'transparent',
 					color: disabled
 						? 'rgba(148,163,184,0.8)' // slate-400

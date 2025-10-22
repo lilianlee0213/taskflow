@@ -50,7 +50,19 @@ const baseTypography = {
 		'@media (min-width:768px)': {fontSize: '0.9rem'},
 		'@media (min-width:1200px)': {fontSize: '0.95rem'},
 	},
-
+	button: {
+		fontSize: '0.8rem',
+		'@media (min-width:768px)': {
+			fontSize: '0.82rem',
+		},
+		// 💻 랩탑/데스크탑 (1200px 이상)
+		'@media (min-width:1200px)': {
+			fontSize: '0.88rem',
+		},
+		'@media (min-width:1400px)': {
+			fontSize: '0.95rem',
+		},
+	},
 	// === Small Text ===
 	caption: {
 		fontSize: '0.75rem',
@@ -96,6 +108,7 @@ const buttonOverrides = {
 		styleOverrides: {
 			root: {
 				fontSize: '0.8rem',
+				// color: color.primary.text,
 				padding: '4px 10px',
 				'@media (min-width:768px)': {
 					fontSize: '0.82rem',

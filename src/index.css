@@ -5,12 +5,13 @@
  /* === LIGHT THEME === */
   --color-page: #f8fafc;
   --color-card: #ffffff;
-  --color-sidebar: #f1f5f9;
+  --color-sidebar: #edf2f6;
+  --color-drawer:#ffffff;
+
   --color-border: #e5e7eb;
   --color-text: #181818;
   --color-text-muted: #64748b;
-  --color-placeholder: #94a3b8; /* slate-400 */
-
+  --color-placeholder: #94a3b8; 
   /* 🎨 Brand */
   --color-primary: #f97316;
   --color-primary-light: #fb923c;
@@ -19,32 +20,33 @@
   /* ✅ Status */
   --color-success: #10b981;
   --color-warning: #f59e0b;
-  --color-error: #dc2626; /* 🔸 red-600: 약간 더 선명하게 */
+  --color-error: #dc2626; 
   --color-info: #1769aa;
 
 }
 /* === DARK THEME === */
 .dark {
   /* 🌚 Base Colors */
-  --color-page: #212121;       /* neutral-900 — 거의 블루기 없는 진한 그레이 */
-  --color-card: #2F2F2F;       /* ChatGPT 톤과 유사한 neutral-850 */
-  --color-sidebar: #181818;    /* ChatGPT-style sidebar background */
-  --color-border: #2d2d2f;        /* subtle border for contrast */
-  --color-text: #F4F4F5;          /* neutral-100 */
-  --color-text-muted: #A1A1AA;    /* neutral-400 */
-  --color-placeholder: #9ca3af; /* neutral-400~500 사이 */
+  --color-page: #212121;      
+  --color-card: #2F2F2F;       
+  --color-sidebar: #181818;    
+  --color-drawer:#191919;
+  --color-border: #2d2d2f;       
+  --color-text: #F4F4F5;          
+  --color-text-muted: #A1A1AA;   
+  --color-placeholder: #9ca3af; 
 
 
   /* 🎨 Brand */
-  --color-primary: #fb923c;       /* 유지: 따뜻한 오렌지 포인트 */
+  --color-primary: #fb923c;       
   --color-primary-light: #fdba74;
   --color-primary-dark: #f97316;
 
   /* ✅ Status */
-  --color-success: #34d399;       /* emerald-400 */
-  --color-warning: #fbbf24;       /* amber-400 */
-  --color-error: #ef4444; /* ✅ red-500: 더 선명, 대비 좋음 */
-  --color-info: #2196F3; /* blue-400 */
+  --color-success: #34d399;       
+  --color-warning: #fbbf24;       
+  --color-error: #ef4444; 
+  --color-info: #2196F3; 
 
 }
 /* :root { color-scheme: light dark; }
@@ -69,3 +71,22 @@ body {
   background-color: transparent !important;
   border: 1px solid var(--color-warning) !important;
 }
+
+
+/* UI Variation */
+/* Button */
+.view-toggle-btn {
+  color: var(--color-text) !important;
+  /* font-size: 12px; */
+  background-color: transparent;
+  padding: 0px 6px !important;
+  text-transform: inherit !important;
+}
+
+.view-toggle-btn:hover,
+.view-toggle-btn:focus,
+.view-toggle-btn:active {
+  color: var(--color-text);
+  background-color: transparent;
+}
+
