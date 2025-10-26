@@ -10,18 +10,47 @@
 
   --color-border: #e5e7eb;
   --color-text: #181818;
-  --color-text-muted: #64748b;
+  --color-text-muted: #687280;
   --color-placeholder: #94a3b8; 
   /* 🎨 Brand */
   --color-primary: #f97316;
   --color-primary-light: #fb923c;
   --color-primary-dark: #ea580c;
-
+  --color-secondary:#7c3aed;
+  
   /* ✅ Status */
   --color-success: #10b981;
   --color-warning: #f59e0b;
   --color-error: #dc2626; 
   --color-info: #1769aa;
+
+  /* Chip */
+  /* 🌊 Blue (Design) */
+  --color-chip-bg-blue: #dbeafe;  /* 아주 연한 블루 */
+  --color-chip-text-blue: #1e3a8a;
+
+  /* 🌿 Green (Development) */
+  --color-chip-bg-green: #dcfce7;
+  --color-chip-text-green: #14532d;
+
+  /* 🍯 Yellow (Research or Marketing alt) */
+  --color-chip-bg-yellow: #fef9c3;
+  --color-chip-text-yellow: #78350f;
+
+  /* 💜 Purple (Marketing) */
+  --color-chip-bg-purple: #f3e8ff;
+  --color-chip-text-purple: #4c1d95;
+
+  /* ❤️ Red (Research alt) */
+  --color-chip-bg-red: #fee2e2;
+  --color-chip-text-red: #7f1d1d;
+
+  /* ✳️ Indigo */
+  --color-chip-bg-indigo: #e0e7ff;
+  --color-chip-text-indigo: #312e81;
+
+  --avatar-bg-neutral: #e0e7ff;   /* faint indigo-gray */
+  --avatar-text-neutral: #1e1b4b; /* deep indigo */
 
 }
 /* === DARK THEME === */
@@ -35,19 +64,42 @@
   --color-text: #F4F4F5;          
   --color-text-muted: #A1A1AA;   
   --color-placeholder: #9ca3af; 
-
+/*  #A1A1AA */
 
   /* 🎨 Brand */
   --color-primary: #fb923c;       
   --color-primary-light: #fdba74;
   --color-primary-dark: #f97316;
+  --color-secondary:#a78bfa;
 
   /* ✅ Status */
   --color-success: #34d399;       
   --color-warning: #fbbf24;       
   --color-error: #ef4444; 
   --color-info: #2196F3; 
+  
 
+  /* Chip */
+  --color-chip-bg-blue: #1e3a8a;
+  --color-chip-text-blue: #93c5fd;
+
+  --color-chip-bg-green: #14532d;
+  --color-chip-text-green: #86efac;
+
+  --color-chip-bg-yellow: #78350f;
+  --color-chip-text-yellow: #fcd34d;
+
+  --color-chip-bg-purple: #4c1d95;
+  --color-chip-text-purple: #d8b4fe;
+
+  --color-chip-bg-red: #7f1d1d;
+  --color-chip-text-red: #fca5a5;
+
+  --color-chip-bg-indigo: #312e81;
+  --color-chip-text-indigo: #a5b4fc;
+
+  --avatar-bg-neutral: #3730a3;   /* deep indigo */
+  --avatar-text-neutral: #e0e7ff; /* soft lavender */
 }
 /* :root { color-scheme: light dark; }
 html, body, #root { height:100%; }
@@ -59,6 +111,7 @@ body {
 
 
 /* MUI Variantion */
+
 .dark .MuiAlert-colorError {
   background-color: transparent !important;
   border: 1px solid var(--color-error) !important;

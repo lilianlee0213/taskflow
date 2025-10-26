@@ -40,13 +40,11 @@ const baseTypography = {
 	// === Body Text ===
 	body1: {
 		fontSize: '0.95rem',
-		lineHeight: 1.6,
 		'@media (min-width:768px)': {fontSize: '1rem'},
 		'@media (min-width:1200px)': {fontSize: '1.05rem'},
 	},
 	body2: {
 		fontSize: '0.875rem',
-		lineHeight: 1.55,
 		'@media (min-width:768px)': {fontSize: '0.9rem'},
 		'@media (min-width:1200px)': {fontSize: '0.95rem'},
 	},
@@ -128,6 +126,23 @@ const buttonOverrides = {
 		},
 	},
 };
+
+const avatarOverrides = {
+	MuiAvatar: {
+		styleOverrides: {
+			root: {
+				// ✅ 다크모드/라이트모드 구분
+				// backgroundColor: 'var(-color-border)',
+
+				'&.MuiAvatar-colorDefault': {
+					backgroundColor: 'var(--avatar-bg-neutral)',
+					color: 'var(--avatar-text-neutral)',
+				},
+			},
+		},
+	},
+};
+
 // ✅ 라이트 테마
 export const lightTheme = createTheme({
 	typography: baseTypography,
@@ -142,7 +157,7 @@ export const lightTheme = createTheme({
 		error: {main: '#dc2626'},
 		info: {main: '#1769aa'},
 	},
-	components: {...inputOverrides, ...buttonOverrides},
+	components: {...inputOverrides, ...buttonOverrides, ...avatarOverrides},
 });
 
 // ✅ 다크 테마
@@ -159,5 +174,5 @@ export const darkTheme = createTheme({
 		error: {main: '#ef4444'},
 		info: {main: '#2196F3'},
 	},
-	components: {...inputOverrides, ...buttonOverrides},
+	components: {...inputOverrides, ...buttonOverrides, ...avatarOverrides},
 });

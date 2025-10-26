@@ -1,16 +1,28 @@
 import React, {useState} from 'react';
 import PageComponent from '../components/PageComponent';
 import {
+	Breadcrumbs,
 	Button,
+	Divider,
 	Drawer,
 	FormControl,
 	InputLabel,
 	MenuItem,
 	Select,
 	Typography,
+	Link,
+	Tooltip,
+	Chip,
+	Avatar,
 } from '@mui/material';
-import {BookmarkIcon} from '@heroicons/react/24/outline';
-import {RiExpandDiagonalLine} from 'react-icons/ri';
+import {
+	BookmarkIcon,
+	PencilSquareIcon,
+	PlusIcon,
+} from '@heroicons/react/24/outline';
+import {RiExpandDiagonal2Line} from 'react-icons/ri';
+import {FiEdit} from 'react-icons/fi';
+import ProjectDrawer from '../features/projects/ProjectDrawer';
 
 const Projects = () => {
 	const [openDrawer, setOpenDrawer] = useState(false);
@@ -31,35 +43,10 @@ const Projects = () => {
 				}
 				headerTitle={'All projects'}
 			/>
-			<Drawer
-				anchor="right"
-				open={openDrawer}
-				onClose={handleCloseDrawer}
-				slotProps={{
-					paper: {
-						sx: {
-							width: '65vw',
-							backgroundColor: 'var(--color-drawer)',
-							backgroundImage: 'none',
-							p: 3,
-							boxShadow: '0 0 12px rgba(0,0,0,0.08)',
-						},
-					},
-				}}
-				BackdropProps={{
-					sx: {
-						backgroundColor: 'rgba(0,0,0,0.1)',
-					},
-				}}>
-				<div>
-					<RiExpandDiagonalLine className="w-6 h-6" />
-					<h3>Project Details</h3>
-					<p>This will be your drawer content.</p>
-					<Button variant="outlined" onClick={handleCloseDrawer}>
-						Close
-					</Button>
-				</div>
-			</Drawer>{' '}
+			<ProjectDrawer
+				openDrawer={openDrawer}
+				handleCloseDrawer={handleCloseDrawer}
+			/>
 		</>
 	);
 };
