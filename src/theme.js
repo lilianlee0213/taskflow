@@ -131,12 +131,9 @@ const avatarOverrides = {
 	MuiAvatar: {
 		styleOverrides: {
 			root: {
-				// ✅ 다크모드/라이트모드 구분
-				// backgroundColor: 'var(-color-border)',
-
 				'&.MuiAvatar-colorDefault': {
-					backgroundColor: 'var(--avatar-bg-neutral)',
-					color: 'var(--avatar-text-neutral)',
+					backgroundColor: 'var( --color-chip-bg-default)',
+					color: 'var( --color-chip-text-default)',
 				},
 			},
 		},

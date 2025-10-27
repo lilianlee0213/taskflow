@@ -46,76 +46,71 @@ function AppContent() {
 	return (
 		<div className="flex h-screen overflow-hidden">
 			{!isPublic && <Sidebar darkMode={darkMode} />}
-			<div className="flex flex-col flex-1">
-				{/* {!isPublic && <Topbar />} */}
 
-				<main
-					className={`bg-page ${
-						isPublic
-							? 'w-full h-full flex items-center justify-center'
-							: 'flex-1 overflow-auto p-8'
-					}`}>
-					<Routes>
-						<Route path="/login" element={<Login />} />
-						<Route
-							path="/"
-							element={
-								<ProtectedRoute>
-									<Dashboard />
-								</ProtectedRoute>
-							}
-						/>
-						<Route
-							path="/projects"
-							element={
-								<ProtectedRoute>
-									<Projects />
-								</ProtectedRoute>
-							}
-						/>
-						<Route
-							path="/projects/:id"
-							element={
-								<ProtectedRoute>
-									<ProjectDetail />
-								</ProtectedRoute>
-							}
-						/>
-						<Route
-							path="/tasks"
-							element={
-								<ProtectedRoute>
-									<Tasks />
-								</ProtectedRoute>
-							}
-						/>
-						<Route
-							path="/time-logs"
-							element={
-								<ProtectedRoute>
-									<TimeLogs />
-								</ProtectedRoute>
-							}
-						/>
-						<Route
-							path="/team"
-							element={
-								<ProtectedRoute>
-									<Team />
-								</ProtectedRoute>
-							}
-						/>
-						<Route
-							path="/setting"
-							element={
-								<ProtectedRoute>
-									<Setting darkMode={darkMode} setDarkMode={setDarkMode} />
-								</ProtectedRoute>
-							}
-						/>
-					</Routes>
-				</main>
-			</div>
+			<main
+				className={`bg-page flex flex-col flex-1 min-w-0 ${
+					isPublic ? 'items-center justify-center' : 'p-8'
+				}`}>
+				<Routes>
+					<Route path="/login" element={<Login />} />
+					<Route
+						path="/"
+						element={
+							<ProtectedRoute>
+								<Dashboard />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/projects"
+						element={
+							<ProtectedRoute>
+								<Projects />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/projects/:id"
+						element={
+							<ProtectedRoute>
+								<ProjectDetail />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/tasks"
+						element={
+							<ProtectedRoute>
+								<Tasks />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/time-logs"
+						element={
+							<ProtectedRoute>
+								<TimeLogs />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/team"
+						element={
+							<ProtectedRoute>
+								<Team />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/setting"
+						element={
+							<ProtectedRoute>
+								<Setting darkMode={darkMode} setDarkMode={setDarkMode} />
+							</ProtectedRoute>
+						}
+					/>
+				</Routes>
+			</main>
 		</div>
 	);
 }

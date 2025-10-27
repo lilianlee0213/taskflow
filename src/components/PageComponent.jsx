@@ -13,7 +13,7 @@ import {BookmarkIcon} from '@heroicons/react/24/outline';
 import InputField from './ui/InputField';
 const PageComponent = ({title, headerTitle, content}) => {
 	return (
-		<Box>
+		<Box sx={{height: 'calc(100% - 120px)'}}>
 			<div className="flex justify-between items-center mb-4 ">
 				<Typography variant="h3" sx={{fontWeight: 600}}>
 					{title}
@@ -115,6 +115,7 @@ const PageComponent = ({title, headerTitle, content}) => {
 			</header>
 			<Paper
 				elevation={0}
+				sx={{height: '100% !important'}}
 				className="!bg-sidebar shadow-md p-4 rounded-full transition-all duration-200">
 				{content}
 			</Paper>

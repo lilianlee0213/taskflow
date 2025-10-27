@@ -2,22 +2,26 @@ import * as React from 'react';
 import {DataGrid} from '@mui/x-data-grid';
 import {Box, Typography, Avatar, Chip} from '@mui/material';
 
-export const SimpleListTable = ({columns = [], rows = []}) => {
-	// DataGrid는 반드시 각 row에 id 필요
+const PageTable = ({columns = [], rows = []}) => {
 	const dataRows = rows.map((row, i) => ({id: row.id || i, ...row}));
 
 	return (
-		<div>
+		<Box
+			sx={{
+				height: '100%',
+				width: '100%',
+				display: 'flex',
+				flexDirection: 'column',
+				minWidth: 0,
+				overflow: 'hidden',
+			}}>
+			{' '}
 			<DataGrid
 				rows={dataRows}
 				columns={columns}
-				columnHeaderHeight={50}
-				rowHeight={50}
 				disableRowSelectionOnClick
-				disableColumnMenu
-				pageSizeOptions={[5, 10, 25]}
 				initialState={{
-					pagination: {paginationModel: 5},
+					pagination: {paginationModel: {pageSize: 8, page: 0}}, // ✅ 기본 표시 10개
 				}}
 				sx={{
 					'& .MuiDataGrid-columnHeaders': {
@@ -31,16 +35,12 @@ export const SimpleListTable = ({columns = [], rows = []}) => {
 							outline: (theme) => `1px solid ${theme.palette.divider}`,
 							outlineOffset: '-1px',
 						},
-					'& .MuiDataGrid-cell p': {
-						fontSize: '.9rem !important',
+					'& .MuiDataGrid-row': {
+						borderBottom: (theme) => `1px solid ${theme.palette.divider}`, // ✅ 행 구분선
 					},
 					'& .MuiDataGrid-columnHeaderTitle': {
-						fontSize: '0.95rem !important',
-						color: 'text.secondary',
+						color: 'text.primary',
 						fontWeight: 600,
-					},
-					'& .MuiTablePagination-root p, & .MuiTablePagination-actions': {
-						fontSize: '0.85rem !important',
 					},
 					'& .MuiDataGrid-cell:focus, & .MuiDataGrid-cell:focus-within': {
 						outline: (theme) => `1px solid ${theme.palette.divider}`, // ✅ 원하는 색상 적용
@@ -48,6 +48,8 @@ export const SimpleListTable = ({columns = [], rows = []}) => {
 					},
 				}}
 			/>
-		</div>
+		</Box>
 	);
 };
+
+export default PageTable;

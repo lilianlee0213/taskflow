@@ -49,6 +49,9 @@
   --color-chip-bg-indigo: #e0e7ff;
   --color-chip-text-indigo: #312e81;
 
+  --color-chip-bg-default: rgba(0, 0, 0, 0.08);
+  --color-chip-text-default: rgba(0, 0, 0, 0.87); 
+  
   --avatar-bg-neutral: #e0e7ff;   /* faint indigo-gray */
   --avatar-text-neutral: #1e1b4b; /* deep indigo */
 
@@ -97,6 +100,9 @@
 
   --color-chip-bg-indigo: #312e81;
   --color-chip-text-indigo: #a5b4fc;
+
+  --color-chip-bg-default: rgba(255, 255, 255, 0.16);
+  --color-chip-text-default: #ffffff;
 
   --avatar-bg-neutral: #3730a3;   /* deep indigo */
   --avatar-text-neutral: #e0e7ff; /* soft lavender */
