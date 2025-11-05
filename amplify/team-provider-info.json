@@ -14,6 +14,9 @@
     "categories": {
       "auth": {
         "taskflow5bc84678": {}
+      },
+      "api": {
+        "taskflow": {}
       }
     }
   }
