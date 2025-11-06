@@ -2,19 +2,41 @@
 # TaskFlow GraphQL Schema
 # ==========================================
 
-type Team @model @auth(rules: [{allow: public}]) {
+type Team
+	@model
+	@auth(
+		rules: [
+			{allow: owner, operations: [create, read, update, delete]}
+			{
+				allow: groups
+				groups: ["Admin", "Manager", "Analyst", "Member"]
+				operations: [read, update]
+			}
+			{allow: public, operations: [read]}
+		]
+	) {
 	id: ID!
 	name: String!
 	description: String
-
 	users: [User] @hasMany(indexName: "byTeam", fields: ["id"])
 	projects: [Project] @hasMany(indexName: "byTeam", fields: ["id"])
-
 	createdAt: AWSDateTime
 	updatedAt: AWSDateTime
 }
 
-type User @model @auth(rules: [{allow: owner}, {allow: public}]) {
+type User
+	@model
+	@auth(
+		rules: [
+			{allow: owner, operations: [create, read, update, delete]}
+			{
+				allow: groups
+				groups: ["Admin", "Manager"]
+				operations: [read, update, delete]
+			}
+			{allow: public, operations: [read]}
+		]
+	) {
 	id: ID!
 	cognitoId: String! @index(name: "byCognitoId")
 	firstName: String!
@@ -23,21 +45,13 @@ type User @model @auth(rules: [{allow: owner}, {allow: public}]) {
 	avatar: String
 	role: String
 	title: String
-
 	teamID: ID @index(name: "byTeam")
 	team: Team @belongsTo(fields: ["teamID"])
 
-	# Projects created by this user
 	createdProjects: [Project] @hasMany(indexName: "byCreator", fields: ["id"])
-
-	# Projects assigned to this user
 	assignedProjects: [Project] @manyToMany(relationName: "ProjectAssignees")
-
-	# Tasks created and assigned
 	createdTasks: [Task] @hasMany(indexName: "byCreator", fields: ["id"])
 	assignedTasks: [Task] @hasMany(indexName: "byAssignee", fields: ["id"])
-
-	# Logs and comments
 	comments: [Comment] @hasMany(indexName: "byAuthor", fields: ["id"])
 	attachments: [Attachment] @hasMany(indexName: "byUploader", fields: ["id"])
 	activityLogs: [ActivityLog] @hasMany(indexName: "byActor", fields: ["id"])
@@ -47,11 +61,22 @@ type User @model @auth(rules: [{allow: owner}, {allow: public}]) {
 	updatedAt: AWSDateTime
 }
 
-type Project @model @auth(rules: [{allow: public}]) {
+type Project
+	@model
+	@auth(
+		rules: [
+			{allow: owner, operations: [create, read, update, delete]}
+			{
+				allow: groups
+				groups: ["Admin", "Manager", "Analyst", "Member"]
+				operations: [read, update]
+			}
+			{allow: public, operations: [read]}
+		]
+	) {
 	id: ID!
 	teamID: ID! @index(name: "byTeam")
 	team: Team @belongsTo(fields: ["teamID"])
-
 	creatorID: ID! @index(name: "byCreator")
 	creator: User @belongsTo(fields: ["creatorID"])
 
@@ -63,7 +88,6 @@ type Project @model @auth(rules: [{allow: public}]) {
 	projectDueDate: AWSDate
 
 	assignees: [User] @manyToMany(relationName: "ProjectAssignees")
-
 	tasks: [Task] @hasMany(indexName: "byProject", fields: ["id"])
 	comments: [Comment] @hasMany(indexName: "byProject", fields: ["id"])
 	attachments: [Attachment] @hasMany(indexName: "byProject", fields: ["id"])
@@ -74,14 +98,24 @@ type Project @model @auth(rules: [{allow: public}]) {
 	updatedAt: AWSDateTime
 }
 
-type Task @model @auth(rules: [{allow: public}]) {
+type Task
+	@model
+	@auth(
+		rules: [
+			{allow: owner, operations: [create, read, update, delete]}
+			{
+				allow: groups
+				groups: ["Admin", "Manager", "Analyst", "Member"]
+				operations: [read, update]
+			}
+			{allow: public, operations: [read]}
+		]
+	) {
 	id: ID!
 	projectID: ID! @index(name: "byProject", sortKeyFields: ["taskDueDate"])
 	project: Project @belongsTo(fields: ["projectID"])
-
 	creatorID: ID! @index(name: "byCreator")
 	creator: User @belongsTo(fields: ["creatorID"])
-
 	assigneeID: ID @index(name: "byAssignee")
 	assignee: User @belongsTo(fields: ["assigneeID"])
 
@@ -100,62 +134,98 @@ type Task @model @auth(rules: [{allow: public}]) {
 	updatedAt: AWSDateTime
 }
 
-type Comment @model @auth(rules: [{allow: public}]) {
+type Comment
+	@model
+	@auth(
+		rules: [
+			{allow: owner, operations: [create, read, update, delete]}
+			{
+				allow: groups
+				groups: ["Admin", "Manager", "Analyst", "Member"]
+				operations: [read, update]
+			}
+			{allow: public, operations: [read]}
+		]
+	) {
 	id: ID!
 	projectID: ID @index(name: "byProject", sortKeyFields: ["createdAt"])
 	project: Project @belongsTo(fields: ["projectID"])
-
 	taskID: ID @index(name: "byTask", sortKeyFields: ["createdAt"])
 	task: Task @belongsTo(fields: ["taskID"])
-
 	authorID: ID! @index(name: "byAuthor")
 	author: User @belongsTo(fields: ["authorID"])
-
 	message: String!
 	createdAt: AWSDateTime
 }
 
-type Attachment @model @auth(rules: [{allow: public}]) {
+type Attachment
+	@model
+	@auth(
+		rules: [
+			{allow: owner, operations: [create, read, update, delete]}
+			{
+				allow: groups
+				groups: ["Admin", "Manager", "Analyst", "Member"]
+				operations: [read, update]
+			}
+			{allow: public, operations: [read]}
+		]
+	) {
 	id: ID!
 	projectID: ID @index(name: "byProject", sortKeyFields: ["fileName"])
 	project: Project @belongsTo(fields: ["projectID"])
-
 	taskID: ID @index(name: "byTask", sortKeyFields: ["fileName"])
 	task: Task @belongsTo(fields: ["taskID"])
-
 	fileName: String!
 	fileUrl: String!
 	fileType: String
-
 	uploaderID: ID! @index(name: "byUploader")
 	uploader: User @belongsTo(fields: ["uploaderID"])
-
 	uploadedAt: AWSDateTime
 }
 
-type ActivityLog @model @auth(rules: [{allow: public}]) {
+type ActivityLog
+	@model
+	@auth(
+		rules: [
+			{allow: owner, operations: [create, read, update, delete]}
+			{
+				allow: groups
+				groups: ["Admin", "Manager", "Analyst", "Member"]
+				operations: [read, update]
+			}
+			{allow: public, operations: [read]}
+		]
+	) {
 	id: ID!
 	projectID: ID @index(name: "byProject", sortKeyFields: ["timestamp"])
 	project: Project @belongsTo(fields: ["projectID"])
-
 	taskID: ID @index(name: "byTask", sortKeyFields: ["timestamp"])
 	task: Task @belongsTo(fields: ["taskID"])
-
 	actorID: ID! @index(name: "byActor")
 	actor: User @belongsTo(fields: ["actorID"])
-
 	action: String!
 	timestamp: AWSDateTime
 }
 
-type TimeLog @model @auth(rules: [{allow: public}]) {
+type TimeLog
+	@model
+	@auth(
+		rules: [
+			{allow: owner, operations: [create, read, update, delete]}
+			{
+				allow: groups
+				groups: ["Admin", "Manager", "Analyst", "Member"]
+				operations: [read, update]
+			}
+			{allow: public, operations: [read]}
+		]
+	) {
 	id: ID!
 	projectID: ID @index(name: "byProject", sortKeyFields: ["logDate"])
 	project: Project @belongsTo(fields: ["projectID"])
-
 	userID: ID! @index(name: "byUserTime")
 	user: User @belongsTo(fields: ["userID"])
-
 	logDate: AWSDate
 	hours: Float
 	description: String

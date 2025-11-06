@@ -28,7 +28,15 @@ import ToastProvider from './components/ui/ToastProvider.jsx';
 import AuthProvider from './components/auth/AuthProvider.jsx';
 import App from './App.jsx';
 import './index.css';
+import {Amplify} from 'aws-amplify';
+import awsExports from './aws-exports';
 
+Amplify.configure({
+	...awsExports,
+	DataStore: {
+		authModeStrategyType: 'MULTI_AUTH', // 여러 모드 병용 허용
+	},
+});
 function ThemedApp() {
 	const [isDark, setIsDark] = useState(
 		document.documentElement.classList.contains('dark')
