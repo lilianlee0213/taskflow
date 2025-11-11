@@ -20,175 +20,106 @@ import {DataStore} from '@aws-amplify/datastore';
 import {Project, User, Team} from './models';
 
 function AppContent() {
-	// 1️⃣ Team 데이터
-	// const teams = [
-	// 	{name: 'Operations', description: 'Handles admin and coordination'},
-	// 	{name: 'Product', description: 'Product planning and management'},
-	// 	{name: 'Engineering', description: 'Frontend and backend development'},
-	// 	{name: 'Design', description: 'UI/UX design and branding'},
-	// 	{name: 'Data', description: 'Data analytics and reporting'},
-	// 	{name: 'Research', description: 'Research and experimentation'},
-	// 	{name: 'Marketing', description: 'Campaigns and content strategy'},
-	// ];
+	const projects = [
+		{
+			projectName: 'TaskFlow Dashboard Redesign',
+			description:
+				'Update the dashboard UI for better task visibility and analytics.',
+			projectLabel: ['UI', 'Frontend'],
+			projectStatus: 'Active',
+			projectProgress: 25,
+			projectDueDate: '2025-12-20',
+			teamName: 'Engineering',
+			creatorEmail: 'emma.davis@taskflow.app',
+		},
+		{
+			projectName: 'Marketing Campaign 2026 Launch',
+			description:
+				'Plan and execute Q1 marketing initiatives across all platforms.',
+			projectLabel: ['Campaign', 'Marketing'],
+			projectStatus: 'Planning',
+			projectProgress: 5,
+			projectDueDate: '2026-01-30',
+			teamName: 'Marketing',
+			creatorEmail: 'ava.thompson@taskflow.app',
+		},
+		{
+			projectName: 'Internal Data Analysis Pipeline',
+			description:
+				'Develop automated ETL pipeline for internal reporting dashboard.',
+			projectLabel: ['Data', 'Automation'],
+			projectStatus: 'In Progress',
+			projectProgress: 40,
+			projectDueDate: '2026-03-15',
+			teamName: 'Data',
+			creatorEmail: 'michael.carter@taskflow.app',
+		},
+		{
+			projectName: 'User Research & Testing Initiative',
+			description:
+				'Conduct usability studies and design validation for new features.',
+			projectLabel: ['Research', 'UX'],
+			projectStatus: 'Active',
+			projectProgress: 60,
+			projectDueDate: '2025-12-10',
+			teamName: 'Design',
+			creatorEmail: 'sophia.martin@taskflow.app',
+		},
+		{
+			projectName: 'Operational Workflow Automation',
+			description:
+				'Automate recurring administrative processes for the Operations team.',
+			projectLabel: ['Automation', 'Backend'],
+			projectStatus: 'Active',
+			projectProgress: 80,
+			projectDueDate: '2025-11-30',
+			teamName: 'Operations',
+			creatorEmail: 'liliandev@taskflow.app',
+		},
+	];
 
-	// useEffect(() => {
-	// 	const seedUsers = async () => {
-	// 		console.log('🚀 Starting User seeding...');
+	// 	useEffect(() => {
+	//   const seedProjects = async () => {
+	//     const existingProjects = await DataStore.query(Project);
+	//     if (existingProjects.length > 0) {
+	//       console.log("ℹ️ Projects already exist. Skipping seeding.");
+	//       return;
+	//     }
 
-	// 		// await DataStore.clear(); // ✅ 로컬 DB 완전히 초기화
-	// 		await DataStore.start(); // ✅ 초기화 후 DataStore 다시 시작
+	//     console.log("🚀 Seeding Projects...");
 
-	// 		// ✅ 2️⃣ 이미 존재하는 팀 조회
-	// 		const allTeams = await DataStore.query(Team);
-	// 		console.log('📦 Teams in DataStore:', allTeams);
+	//     const allTeams = await DataStore.query(Team);
+	//     const allUsers = await DataStore.query(User);
 
-	// 		if (allTeams.length === 0) {
-	// 			console.error(
-	// 				'❌ No teams found. Make sure Team data exists before seeding users.'
-	// 			);
-	// 			return;
-	// 		}
+	//     for (const p of projects) {
+	//       const team = allTeams.find((t) => t.name === p.teamName);
+	//       const creator = allUsers.find((u) => u.email === p.creatorEmail);
 
-	// 		const existingUsers = await DataStore.query(User);
-	// 		if (existingUsers.length > 0) {
-	// 			console.log('ℹ️ Users already exist, skipping seed.');
-	// 			return;
-	// 		}
+	//       if (!team || !creator) {
+	//         console.warn(`⚠️ Skipping project ${p.projectName}: missing team or creator`);
+	//         continue;
+	//       }
 
-	// 		// ✅ 4️⃣ 유저 데이터 목록
-	// 		const users = [
-	// 			{
-	// 				cognitoId: '84682498-50f1-7067-6aab-aae26395748b',
-	// 				firstName: 'Lilian',
-	// 				lastName: 'Lee',
-	// 				email: 'liliandev@taskflow.app',
-	// 				role: 'Admin',
-	// 				title: 'Head of Product',
-	// 				teamID: 'Operations',
-	// 				avatar: 'https://i.pravatar.cc/150?img=1',
-	// 			},
-	// 			{
-	// 				cognitoId: '9e2e4aa8-3d41-7a12-8dbf-cc01fa234a7e',
-	// 				firstName: 'Alex',
-	// 				lastName: 'Johnson',
-	// 				email: 'alex.johnson@taskflow.app',
-	// 				role: 'Manager',
-	// 				title: 'Product Manager',
-	// 				teamID: 'Product',
-	// 				avatar: 'https://i.pravatar.cc/150?img=2',
-	// 			},
-	// 			{
-	// 				cognitoId: 'd53e02aa-4c56-8b74-9ee4-e4dbb8cc443a',
-	// 				firstName: 'Emma',
-	// 				lastName: 'Davis',
-	// 				email: 'emma.davis@taskflow.app',
-	// 				role: 'Manager',
-	// 				title: 'Engineering Lead',
-	// 				teamID: 'Engineering',
-	// 				avatar: 'https://i.pravatar.cc/150?img=3',
-	// 			},
-	// 			{
-	// 				cognitoId: 'b124a4c8-4e8b-9320-b74e-c25bdb9936ad',
-	// 				firstName: 'Michael',
-	// 				lastName: 'Carter',
-	// 				email: 'michael.carter@taskflow.app',
-	// 				role: 'Analyst',
-	// 				title: 'Data Analyst',
-	// 				teamID: 'Data',
-	// 				avatar: 'https://i.pravatar.cc/150?img=4',
-	// 			},
-	// 			{
-	// 				cognitoId: 'a66c5b3f-12e7-8d2a-91ae-bc1d1b03c0e9',
-	// 				firstName: 'Sophia',
-	// 				lastName: 'Martin',
-	// 				email: 'sophia.martin@taskflow.app',
-	// 				role: 'Member',
-	// 				title: 'UI/UX Designer',
-	// 				teamID: 'Design',
-	// 				avatar: 'https://i.pravatar.cc/150?img=5',
-	// 			},
-	// 			{
-	// 				cognitoId: 'e11c79c5-14b1-8873-9e22-d7db6fa449ae',
-	// 				firstName: 'James',
-	// 				lastName: 'Wilson',
-	// 				email: 'james.wilson@taskflow.app',
-	// 				role: 'Member',
-	// 				title: 'Frontend Developer',
-	// 				teamID: 'Engineering',
-	// 				avatar: 'https://i.pravatar.cc/150?img=6',
-	// 			},
-	// 			{
-	// 				cognitoId: 'd54f8b71-49a3-9942-8db2-dc56b893fa9d',
-	// 				firstName: 'Olivia',
-	// 				lastName: 'Brown',
-	// 				email: 'olivia.brown@taskflow.app',
-	// 				role: 'Member',
-	// 				title: 'Backend Developer',
-	// 				teamID: 'Engineering',
-	// 				avatar: 'https://i.pravatar.cc/150?img=7',
-	// 			},
-	// 			{
-	// 				cognitoId: 'f81b00e4-97a2-8369-81a8-ecb184b14ee9',
-	// 				firstName: 'Ethan',
-	// 				lastName: 'Miller',
-	// 				email: 'ethan.miller@taskflow.app',
-	// 				role: 'Analyst',
-	// 				title: 'Research Analyst',
-	// 				teamID: 'Research',
-	// 				avatar: 'https://i.pravatar.cc/150?img=8',
-	// 			},
-	// 			{
-	// 				cognitoId: 'c44c21c3-21f8-9280-8133-cfbb234cc0a4',
-	// 				firstName: 'Ava',
-	// 				lastName: 'Thompson',
-	// 				email: 'ava.thompson@taskflow.app',
-	// 				role: 'Manager',
-	// 				title: 'Marketing Lead',
-	// 				teamID: 'Marketing',
-	// 				avatar: 'https://i.pravatar.cc/150?img=9',
-	// 			},
-	// 			{
-	// 				cognitoId: 'b53d20a9-84e3-7521-8f22-bc8bfa28325e',
-	// 				firstName: 'Noah',
-	// 				lastName: 'Anderson',
-	// 				email: 'noah.anderson@taskflow.app',
-	// 				role: 'Member',
-	// 				title: 'Campaign Specialist',
-	// 				teamID: 'Marketing',
-	// 				avatar: 'https://i.pravatar.cc/150?img=10',
-	// 			},
-	// 		];
-	// 		// ✅ 5️⃣ 유저 생성
-	// 		for (const u of users) {
-	// 			const team = allTeams.find((t) => t.name === u.teamID);
+	//       await DataStore.save(
+	//         new Project({
+	//           projectName: p.projectName,
+	//           description: p.description,
+	//           projectLabel: p.projectLabel,
+	//           projectStatus: p.projectStatus,
+	//           projectProgress: p.projectProgress,
+	//           projectDueDate: p.projectDueDate,
+	//           teamID: team.id,
+	//           creatorID: creator.id,
+	//         })
+	//       );
 
-	// 			if (!team) {
-	// 				console.warn(`⚠️ Skipping ${u.firstName} — team not found`);
-	// 				continue;
-	// 			}
+	//       console.log(`✅ Created: ${p.projectName} (Team: ${team.name})`);
+	//     }
 
-	// 			// 👇 teamID만 넘기되, DataStore가 팀을 완전히 sync했는지 기다림
-	// 			await new Promise((r) => setTimeout(r, 1500));
-	// 			const newUser = await DataStore.save(
-	// 				new User({
-	// 					cognitoId: u.cognitoId, // Cognito placeholder
-	// 					firstName: u.firstName,
-	// 					lastName: u.lastName,
-	// 					email: u.email,
-	// 					role: u.role,
-	// 					title: u.title,
-	// 					avatar: u.avatar,
-	// 					team: team, // ✅ belongsTo 관계 직접 연결
-	// 				})
-	// 			);
+	//     console.log("🎉 All projects seeded successfully!");
+	//   };
 
-	// 			console.log(`✅ Created: ${newUser.firstName} → Team: ${team.name}`);
-	// 		}
-
-	// 		console.log('🎉 All users seeded successfully!');
-	// 	};
-
-	// 	seedUsers();
+	//   seedProjects();
 	// }, []);
 	const [darkMode, setDarkMode] = useState(
 		document.documentElement.classList.contains('dark')

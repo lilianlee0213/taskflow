@@ -30,59 +30,107 @@ export const ProjectTable = ({rows = [], onRowClick}) => {
 			),
 		},
 		{
-			field: 'label',
+			field: 'projectLabel',
 			headerName: 'Label',
-			width: 120,
+			width: 180,
 			headerAlign: 'center',
 			align: 'center',
-			renderCell: (params) => (
-				<Chip
-					label={params.value}
-					size="small"
-					sx={{fontSize: '0.75rem', fontWeight: 500}}
-				/>
-			),
+			renderCell: (params) => {
+				const labels = params.value || params.row.projectLabel; // ✅ 안전하게 접근
+				if (!labels || labels.length === 0) {
+					return (
+						<Chip
+							label="—"
+							size="small"
+							variant="outlined"
+							sx={{
+								fontSize: '0.75rem',
+								fontWeight: 500,
+								color: 'var(--color-text-muted)',
+								borderColor: 'var(--color-border)',
+							}}
+						/>
+					);
+				}
+				return (
+					<>
+						{labels.map((label, idx) => (
+							<Chip
+								key={idx}
+								label={label}
+								size="small"
+								sx={{
+									fontSize: '0.75rem',
+									fontWeight: 500,
+									mr: 0.5,
+								}}
+							/>
+						))}
+					</>
+				);
+			},
 		},
+
 		{
 			field: 'assignees',
 			headerName: 'Assignees',
 			width: 180,
 			headerAlign: 'center',
 			align: 'center',
-			renderCell: (params) => (
-				<Box
-					sx={{
-						display: 'flex',
-						justifyContent: 'center',
-						alignItems: 'center',
-						width: '100%',
-						height: '100%',
-					}}>
-					<AvatarGroup
-						max={4}
-						sx={{justifyContent: 'center'}}
-						slotProps={{
-							additionalAvatar: {
-								sx: {
-									width: 28,
-									height: 28,
-									fontSize: '0.75rem',
-									fontWeight: 600,
-								},
-							},
+			renderCell: (params) => {
+				const users = params.value || [];
+
+				if (users.length === 0) {
+					return (
+						<div className="h-full flex justify-center items-center">
+							<Typography
+								variant="body2"
+								sx={{
+									color: 'var(--color-text-muted)',
+									fontSize: '0.85rem',
+									fontWeight: 500,
+								}}>
+								—
+							</Typography>
+						</div>
+					);
+				}
+
+				return (
+					<Box
+						sx={{
+							display: 'flex',
+							justifyContent: 'center',
+							alignItems: 'center',
+							width: '100%',
+							height: '100%',
 						}}>
-						{params.value?.map((user, i) => (
-							<Tooltip key={i} title={user.name}>
-								<Avatar
-									src={user.avatar}
-									sx={{width: 28, height: 28, fontSize: 13}}>
-									{user.name[0]}
-								</Avatar>
-							</Tooltip>
-						))}
-					</AvatarGroup>
-				</Box>
-			),
+						<AvatarGroup
+							max={4}
+							sx={{justifyContent: 'center'}}
+							slotProps={{
+								additionalAvatar: {
+									sx: {
+										width: 28,
+										height: 28,
+										fontSize: '0.75rem',
+										fontWeight: 600,
+									},
+								},
+							}}>
+							{users.map((user, i) => (
+								<Tooltip key={i} title={user.name}>
+									<Avatar
+										src={user.avatar}
+										sx={{width: 28, height: 28, fontSize: 13}}>
+										{user.name[0]}
+									</Avatar>
+								</Tooltip>
+							))}
+						</AvatarGroup>
+					</Box>
+				);
+			},
 		},
 		{
 			field: 'projectStatus',

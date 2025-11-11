@@ -11,7 +11,7 @@ const ProjectDrawer = ({openDrawer, handleCloseDrawer}) => {
 	return (
 		<Drawer
 			anchor="right"
-			open={true}
+			open={openDrawer}
 			onClose={handleCloseDrawer}
 			slotProps={{
 				paper: {
