@@ -24,7 +24,7 @@ import {RiExpandDiagonal2Line} from 'react-icons/ri';
 import {FiEdit} from 'react-icons/fi';
 import ProjectDrawer from '../features/projects/ProjectDrawer';
 import {ProjectTable} from '../features/projects/ProjectTable';
-import {DataStore} from '@aws-amplify/datastore';
+import {DataStore, Predicates} from '@aws-amplify/datastore';
 import {Project, User, ProjectAssignees, Comment, ActivityLog} from '../models';
 const Projects = () => {
 	const [projects, setProjects] = useState([]);
@@ -48,6 +48,48 @@ const Projects = () => {
 							};
 						})
 					);
+
+					/** 🧑‍💼 Creator (belongsTo) */
+					const creator = await project.creator;
+					/** 💬 Comments */
+					const comments = await project.comments.toArray();
+					const commentList = await Promise.all(
+						comments.map(async (c) => {
+							const author = await c.author;
+							return {
+								user: {
+									name: `${author.firstName} ${author.lastName}`,
+									avatar: author.avatar,
+								},
+								text: c.message,
+								createdAt: c.createdAt,
+							};
+						})
+					);
+
+					/** 🕓 Activity Logs */
+					const activityLogs = await project.activityLogs.toArray();
+					const activityList = await Promise.all(
+						activityLogs.map(async (log) => {
+							const actor = await log.actor; // belongsTo(User)
+							const projectRef = await log.project; // belongsTo(Project)
+
+							return {
+								id: log.id,
+								type: log.taskID ? 'task' : 'project',
+								project: projectRef?.projectName || 'Unknown Project',
+								actor: {
+									name: `${actor.firstName} ${actor.lastName}`,
+									avatar: actor.avatar,
+								},
+								action: log.action,
+								content: log.content,
+								createdAt: log.timestamp || log.createdAt,
+								updatedAt: log.updatedAt || null,
+							};
+						})
+					);
+
 					processed.push({
 						id: project.id,
 						projectLabel: project.projectLabel,
@@ -55,10 +97,14 @@ const Projects = () => {
 						projectStatus: project.projectStatus,
 						projectProgress: project.projectProgress,
 						projectDueDate: project.projectDueDate,
+						description: project.description,
 						assignees: users,
+						createdBy: creator,
+						comments: commentList,
+						activityLogs: activityList,
 					});
 				}
-
+				console.log(processed);
 				setProjects(processed);
 			} catch (error) {
 				console.error('error fetching projects', error);
@@ -67,8 +113,17 @@ const Projects = () => {
 		fetchProjects();
 	}, []);
 
-	const handleOpenDrawer = () => setOpenDrawer(true);
-	const handleCloseDrawer = () => setOpenDrawer(false);
+	const handleOpenDrawer = (project) => {
+		if (!project) {
+			return;
+		}
+		setOpenDrawer(true);
+		setSelectedProject(project);
+	};
+	const handleCloseDrawer = () => {
+		setOpenDrawer(false);
+		setSelectedProject(null);
+	};
 	return (
 		<>
 			<PageComponent
@@ -77,7 +132,7 @@ const Projects = () => {
 					<>
 						<ProjectTable
 							rows={projects}
-							// onRowClick={(row) => setSelectedProject(row)}
+							onRowClick={(row) => handleOpenDrawer(row)}
 						/>
 						{/* <Button variant="contained" onClick={handleOpenDrawer}>
 							Click to open
@@ -89,6 +144,7 @@ const Projects = () => {
 			<ProjectDrawer
 				openDrawer={openDrawer}
 				handleCloseDrawer={handleCloseDrawer}
+				project={selectedProject || null}
 			/>
 		</>
 	);

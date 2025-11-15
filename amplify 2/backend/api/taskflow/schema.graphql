@@ -1,8 +1,12 @@
+# ==========================================
+# TaskFlow GraphQL Schema
+# ==========================================
+
 type Team
 	@model
 	@auth(
 		rules: [
-			{allow: private, operations: [create, read, update, delete]}
+			{allow: owner, operations: [create, read, update, delete]}
 			{
 				allow: groups
 				groups: ["Admin", "Manager", "Analyst", "Member"]
@@ -24,7 +28,7 @@ type User
 	@model
 	@auth(
 		rules: [
-			{allow: private, operations: [create, read, update, delete]}
+			{allow: owner, operations: [create, read, update, delete]}
 			{
 				allow: groups
 				groups: ["Admin", "Manager"]
@@ -43,6 +47,7 @@ type User
 	title: String
 	teamID: ID @index(name: "byTeam")
 	team: Team @belongsTo(fields: ["teamID"])
+
 	createdProjects: [Project] @hasMany(indexName: "byCreator", fields: ["id"])
 	assignedProjects: [Project] @manyToMany(relationName: "ProjectAssignees")
 	createdTasks: [Task] @hasMany(indexName: "byCreator", fields: ["id"])
@@ -51,6 +56,7 @@ type User
 	attachments: [Attachment] @hasMany(indexName: "byUploader", fields: ["id"])
 	activityLogs: [ActivityLog] @hasMany(indexName: "byActor", fields: ["id"])
 	timeLogs: [TimeLog] @hasMany(indexName: "byUserTime", fields: ["id"])
+
 	createdAt: AWSDateTime
 	updatedAt: AWSDateTime
 }
@@ -59,7 +65,7 @@ type Project
 	@model
 	@auth(
 		rules: [
-			{allow: private, operations: [create, read, update, delete]}
+			{allow: owner, operations: [create, read, update, delete]}
 			{
 				allow: groups
 				groups: ["Admin", "Manager", "Analyst", "Member"]
@@ -73,18 +79,21 @@ type Project
 	team: Team @belongsTo(fields: ["teamID"])
 	creatorID: ID! @index(name: "byCreator")
 	creator: User @belongsTo(fields: ["creatorID"])
+
 	projectName: String!
 	projectLabel: [String]
 	description: String
 	projectStatus: String
 	projectProgress: Int
 	projectDueDate: AWSDate
+
 	assignees: [User] @manyToMany(relationName: "ProjectAssignees")
 	tasks: [Task] @hasMany(indexName: "byProject", fields: ["id"])
 	comments: [Comment] @hasMany(indexName: "byProject", fields: ["id"])
 	attachments: [Attachment] @hasMany(indexName: "byProject", fields: ["id"])
 	activityLogs: [ActivityLog] @hasMany(indexName: "byProject", fields: ["id"])
 	timeLogs: [TimeLog] @hasMany(indexName: "byProject", fields: ["id"])
+
 	createdAt: AWSDateTime
 	updatedAt: AWSDateTime
 }
@@ -93,7 +102,7 @@ type Task
 	@model
 	@auth(
 		rules: [
-			{allow: private, operations: [create, read, update, delete]}
+			{allow: owner, operations: [create, read, update, delete]}
 			{
 				allow: groups
 				groups: ["Admin", "Manager", "Analyst", "Member"]
@@ -109,15 +118,18 @@ type Task
 	creator: User @belongsTo(fields: ["creatorID"])
 	assigneeID: ID @index(name: "byAssignee")
 	assignee: User @belongsTo(fields: ["assigneeID"])
+
 	taskName: String!
 	taskDescription: String
 	taskStatus: String
 	taskProgress: Int
 	taskPriority: String
 	taskDueDate: AWSDate
+
 	comments: [Comment] @hasMany(indexName: "byTask", fields: ["id"])
 	attachments: [Attachment] @hasMany(indexName: "byTask", fields: ["id"])
 	activityLogs: [ActivityLog] @hasMany(indexName: "byTask", fields: ["id"])
+
 	createdAt: AWSDateTime
 	updatedAt: AWSDateTime
 }
@@ -126,7 +138,7 @@ type Comment
 	@model
 	@auth(
 		rules: [
-			{allow: private, operations: [create, read, update, delete]}
+			{allow: owner, operations: [create, read, update, delete]}
 			{
 				allow: groups
 				groups: ["Admin", "Manager", "Analyst", "Member"]
@@ -150,7 +162,7 @@ type Attachment
 	@model
 	@auth(
 		rules: [
-			{allow: private, operations: [create, read, update, delete]}
+			{allow: owner, operations: [create, read, update, delete]}
 			{
 				allow: groups
 				groups: ["Admin", "Manager", "Analyst", "Member"]
@@ -176,7 +188,7 @@ type ActivityLog
 	@model
 	@auth(
 		rules: [
-			{allow: private, operations: [create, read, update, delete]}
+			{allow: owner, operations: [create, read, update, delete]}
 			{
 				allow: groups
 				groups: ["Admin", "Manager", "Analyst", "Member"]
@@ -188,11 +200,14 @@ type ActivityLog
 	id: ID!
 	projectID: ID @index(name: "byProject", sortKeyFields: ["timestamp"])
 	project: Project @belongsTo(fields: ["projectID"])
+
 	taskID: ID @index(name: "byTask", sortKeyFields: ["timestamp"])
 	task: Task @belongsTo(fields: ["taskID"])
+
 	actorID: ID! @index(name: "byActor")
 	actor: User @belongsTo(fields: ["actorID"])
-	action: String!
+
+	action: String! # "create" | "update" | "delete" | "comment"
 	content: String!
 	timestamp: AWSDateTime
 }
@@ -201,7 +216,7 @@ type TimeLog
 	@model
 	@auth(
 		rules: [
-			{allow: private, operations: [create, read, update, delete]}
+			{allow: owner, operations: [create, read, update, delete]}
 			{
 				allow: groups
 				groups: ["Admin", "Manager", "Analyst", "Member"]

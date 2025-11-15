@@ -10,8 +10,11 @@ import {
 	Divider,
 } from '@mui/material';
 import {Send, AttachFile} from '@mui/icons-material';
-import dayjs from 'dayjs';
 import {PaperAirplaneIcon} from '@heroicons/react/24/outline';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+dayjs.extend(relativeTime);
+
 export default function CommentSection({comments = []}) {
 	return (
 		<Box sx={{px: 2, display: 'flex', flexDirection: 'column'}}>
@@ -40,7 +43,7 @@ export default function CommentSection({comments = []}) {
 									<Typography
 										variant="caption"
 										sx={{color: 'var(--color-text-muted)'}}>
-										{dayjs(c.createdAt).format('D MMM YYYY')}
+										{dayjs(c.createdAt).fromNow()}
 									</Typography>
 								</Stack>
 

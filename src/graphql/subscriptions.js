@@ -2,11 +2,8 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateTeam = /* GraphQL */ `
-  subscription OnCreateTeam(
-    $filter: ModelSubscriptionTeamFilterInput
-    $owner: String
-  ) {
-    onCreateTeam(filter: $filter, owner: $owner) {
+  subscription OnCreateTeam($filter: ModelSubscriptionTeamFilterInput) {
+    onCreateTeam(filter: $filter) {
       id
       name
       description
@@ -25,17 +22,13 @@ export const onCreateTeam = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
 `;
 export const onUpdateTeam = /* GraphQL */ `
-  subscription OnUpdateTeam(
-    $filter: ModelSubscriptionTeamFilterInput
-    $owner: String
-  ) {
-    onUpdateTeam(filter: $filter, owner: $owner) {
+  subscription OnUpdateTeam($filter: ModelSubscriptionTeamFilterInput) {
+    onUpdateTeam(filter: $filter) {
       id
       name
       description
@@ -54,17 +47,13 @@ export const onUpdateTeam = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
 `;
 export const onDeleteTeam = /* GraphQL */ `
-  subscription OnDeleteTeam(
-    $filter: ModelSubscriptionTeamFilterInput
-    $owner: String
-  ) {
-    onDeleteTeam(filter: $filter, owner: $owner) {
+  subscription OnDeleteTeam($filter: ModelSubscriptionTeamFilterInput) {
+    onDeleteTeam(filter: $filter) {
       id
       name
       description
@@ -83,17 +72,13 @@ export const onDeleteTeam = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
 `;
 export const onCreateUser = /* GraphQL */ `
-  subscription OnCreateUser(
-    $filter: ModelSubscriptionUserFilterInput
-    $owner: String
-  ) {
-    onCreateUser(filter: $filter, owner: $owner) {
+  subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
+    onCreateUser(filter: $filter) {
       id
       cognitoId
       firstName
@@ -112,7 +97,6 @@ export const onCreateUser = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       createdProjects {
@@ -160,17 +144,13 @@ export const onCreateUser = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
 `;
 export const onUpdateUser = /* GraphQL */ `
-  subscription OnUpdateUser(
-    $filter: ModelSubscriptionUserFilterInput
-    $owner: String
-  ) {
-    onUpdateUser(filter: $filter, owner: $owner) {
+  subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
+    onUpdateUser(filter: $filter) {
       id
       cognitoId
       firstName
@@ -189,7 +169,6 @@ export const onUpdateUser = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       createdProjects {
@@ -237,17 +216,13 @@ export const onUpdateUser = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
 `;
 export const onDeleteUser = /* GraphQL */ `
-  subscription OnDeleteUser(
-    $filter: ModelSubscriptionUserFilterInput
-    $owner: String
-  ) {
-    onDeleteUser(filter: $filter, owner: $owner) {
+  subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
+    onDeleteUser(filter: $filter) {
       id
       cognitoId
       firstName
@@ -266,7 +241,6 @@ export const onDeleteUser = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       createdProjects {
@@ -314,17 +288,13 @@ export const onDeleteUser = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
 `;
 export const onCreateProject = /* GraphQL */ `
-  subscription OnCreateProject(
-    $filter: ModelSubscriptionProjectFilterInput
-    $owner: String
-  ) {
-    onCreateProject(filter: $filter, owner: $owner) {
+  subscription OnCreateProject($filter: ModelSubscriptionProjectFilterInput) {
+    onCreateProject(filter: $filter) {
       id
       teamID
       team {
@@ -336,7 +306,6 @@ export const onCreateProject = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       creatorID
@@ -355,7 +324,6 @@ export const onCreateProject = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       projectName
@@ -399,17 +367,13 @@ export const onCreateProject = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
 `;
 export const onUpdateProject = /* GraphQL */ `
-  subscription OnUpdateProject(
-    $filter: ModelSubscriptionProjectFilterInput
-    $owner: String
-  ) {
-    onUpdateProject(filter: $filter, owner: $owner) {
+  subscription OnUpdateProject($filter: ModelSubscriptionProjectFilterInput) {
+    onUpdateProject(filter: $filter) {
       id
       teamID
       team {
@@ -421,7 +385,6 @@ export const onUpdateProject = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       creatorID
@@ -440,7 +403,6 @@ export const onUpdateProject = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       projectName
@@ -484,17 +446,13 @@ export const onUpdateProject = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
 `;
 export const onDeleteProject = /* GraphQL */ `
-  subscription OnDeleteProject(
-    $filter: ModelSubscriptionProjectFilterInput
-    $owner: String
-  ) {
-    onDeleteProject(filter: $filter, owner: $owner) {
+  subscription OnDeleteProject($filter: ModelSubscriptionProjectFilterInput) {
+    onDeleteProject(filter: $filter) {
       id
       teamID
       team {
@@ -506,7 +464,6 @@ export const onDeleteProject = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       creatorID
@@ -525,7 +482,6 @@ export const onDeleteProject = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       projectName
@@ -569,17 +525,13 @@ export const onDeleteProject = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
 `;
 export const onCreateTask = /* GraphQL */ `
-  subscription OnCreateTask(
-    $filter: ModelSubscriptionTaskFilterInput
-    $owner: String
-  ) {
-    onCreateTask(filter: $filter, owner: $owner) {
+  subscription OnCreateTask($filter: ModelSubscriptionTaskFilterInput) {
+    onCreateTask(filter: $filter) {
       id
       projectID
       project {
@@ -597,7 +549,6 @@ export const onCreateTask = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       creatorID
@@ -616,7 +567,6 @@ export const onCreateTask = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       assigneeID
@@ -635,7 +585,6 @@ export const onCreateTask = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskName
@@ -664,17 +613,13 @@ export const onCreateTask = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
 `;
 export const onUpdateTask = /* GraphQL */ `
-  subscription OnUpdateTask(
-    $filter: ModelSubscriptionTaskFilterInput
-    $owner: String
-  ) {
-    onUpdateTask(filter: $filter, owner: $owner) {
+  subscription OnUpdateTask($filter: ModelSubscriptionTaskFilterInput) {
+    onUpdateTask(filter: $filter) {
       id
       projectID
       project {
@@ -692,7 +637,6 @@ export const onUpdateTask = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       creatorID
@@ -711,7 +655,6 @@ export const onUpdateTask = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       assigneeID
@@ -730,7 +673,6 @@ export const onUpdateTask = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskName
@@ -759,17 +701,13 @@ export const onUpdateTask = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
 `;
 export const onDeleteTask = /* GraphQL */ `
-  subscription OnDeleteTask(
-    $filter: ModelSubscriptionTaskFilterInput
-    $owner: String
-  ) {
-    onDeleteTask(filter: $filter, owner: $owner) {
+  subscription OnDeleteTask($filter: ModelSubscriptionTaskFilterInput) {
+    onDeleteTask(filter: $filter) {
       id
       projectID
       project {
@@ -787,7 +725,6 @@ export const onDeleteTask = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       creatorID
@@ -806,7 +743,6 @@ export const onDeleteTask = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       assigneeID
@@ -825,7 +761,6 @@ export const onDeleteTask = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskName
@@ -854,17 +789,13 @@ export const onDeleteTask = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
 `;
 export const onCreateComment = /* GraphQL */ `
-  subscription OnCreateComment(
-    $filter: ModelSubscriptionCommentFilterInput
-    $owner: String
-  ) {
-    onCreateComment(filter: $filter, owner: $owner) {
+  subscription OnCreateComment($filter: ModelSubscriptionCommentFilterInput) {
+    onCreateComment(filter: $filter) {
       id
       projectID
       project {
@@ -882,7 +813,6 @@ export const onCreateComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskID
@@ -902,7 +832,6 @@ export const onCreateComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       authorID
@@ -921,7 +850,6 @@ export const onCreateComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       message
@@ -930,17 +858,13 @@ export const onCreateComment = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
 `;
 export const onUpdateComment = /* GraphQL */ `
-  subscription OnUpdateComment(
-    $filter: ModelSubscriptionCommentFilterInput
-    $owner: String
-  ) {
-    onUpdateComment(filter: $filter, owner: $owner) {
+  subscription OnUpdateComment($filter: ModelSubscriptionCommentFilterInput) {
+    onUpdateComment(filter: $filter) {
       id
       projectID
       project {
@@ -958,7 +882,6 @@ export const onUpdateComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskID
@@ -978,7 +901,6 @@ export const onUpdateComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       authorID
@@ -997,7 +919,6 @@ export const onUpdateComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       message
@@ -1006,17 +927,13 @@ export const onUpdateComment = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
 `;
 export const onDeleteComment = /* GraphQL */ `
-  subscription OnDeleteComment(
-    $filter: ModelSubscriptionCommentFilterInput
-    $owner: String
-  ) {
-    onDeleteComment(filter: $filter, owner: $owner) {
+  subscription OnDeleteComment($filter: ModelSubscriptionCommentFilterInput) {
+    onDeleteComment(filter: $filter) {
       id
       projectID
       project {
@@ -1034,7 +951,6 @@ export const onDeleteComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskID
@@ -1054,7 +970,6 @@ export const onDeleteComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       authorID
@@ -1073,7 +988,6 @@ export const onDeleteComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       message
@@ -1082,7 +996,6 @@ export const onDeleteComment = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -1090,9 +1003,8 @@ export const onDeleteComment = /* GraphQL */ `
 export const onCreateAttachment = /* GraphQL */ `
   subscription OnCreateAttachment(
     $filter: ModelSubscriptionAttachmentFilterInput
-    $owner: String
   ) {
-    onCreateAttachment(filter: $filter, owner: $owner) {
+    onCreateAttachment(filter: $filter) {
       id
       projectID
       project {
@@ -1110,7 +1022,6 @@ export const onCreateAttachment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskID
@@ -1130,7 +1041,6 @@ export const onCreateAttachment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       fileName
@@ -1152,7 +1062,6 @@ export const onCreateAttachment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       uploadedAt
@@ -1161,7 +1070,6 @@ export const onCreateAttachment = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -1169,9 +1077,8 @@ export const onCreateAttachment = /* GraphQL */ `
 export const onUpdateAttachment = /* GraphQL */ `
   subscription OnUpdateAttachment(
     $filter: ModelSubscriptionAttachmentFilterInput
-    $owner: String
   ) {
-    onUpdateAttachment(filter: $filter, owner: $owner) {
+    onUpdateAttachment(filter: $filter) {
       id
       projectID
       project {
@@ -1189,7 +1096,6 @@ export const onUpdateAttachment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskID
@@ -1209,7 +1115,6 @@ export const onUpdateAttachment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       fileName
@@ -1231,7 +1136,6 @@ export const onUpdateAttachment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       uploadedAt
@@ -1240,7 +1144,6 @@ export const onUpdateAttachment = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -1248,9 +1151,8 @@ export const onUpdateAttachment = /* GraphQL */ `
 export const onDeleteAttachment = /* GraphQL */ `
   subscription OnDeleteAttachment(
     $filter: ModelSubscriptionAttachmentFilterInput
-    $owner: String
   ) {
-    onDeleteAttachment(filter: $filter, owner: $owner) {
+    onDeleteAttachment(filter: $filter) {
       id
       projectID
       project {
@@ -1268,7 +1170,6 @@ export const onDeleteAttachment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskID
@@ -1288,7 +1189,6 @@ export const onDeleteAttachment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       fileName
@@ -1310,7 +1210,6 @@ export const onDeleteAttachment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       uploadedAt
@@ -1319,7 +1218,6 @@ export const onDeleteAttachment = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -1327,9 +1225,8 @@ export const onDeleteAttachment = /* GraphQL */ `
 export const onCreateActivityLog = /* GraphQL */ `
   subscription OnCreateActivityLog(
     $filter: ModelSubscriptionActivityLogFilterInput
-    $owner: String
   ) {
-    onCreateActivityLog(filter: $filter, owner: $owner) {
+    onCreateActivityLog(filter: $filter) {
       id
       projectID
       project {
@@ -1347,7 +1244,6 @@ export const onCreateActivityLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskID
@@ -1367,7 +1263,6 @@ export const onCreateActivityLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       actorID
@@ -1386,17 +1281,16 @@ export const onCreateActivityLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       action
+      content
       timestamp
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -1404,9 +1298,8 @@ export const onCreateActivityLog = /* GraphQL */ `
 export const onUpdateActivityLog = /* GraphQL */ `
   subscription OnUpdateActivityLog(
     $filter: ModelSubscriptionActivityLogFilterInput
-    $owner: String
   ) {
-    onUpdateActivityLog(filter: $filter, owner: $owner) {
+    onUpdateActivityLog(filter: $filter) {
       id
       projectID
       project {
@@ -1424,7 +1317,6 @@ export const onUpdateActivityLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskID
@@ -1444,7 +1336,6 @@ export const onUpdateActivityLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       actorID
@@ -1463,17 +1354,16 @@ export const onUpdateActivityLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       action
+      content
       timestamp
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -1481,9 +1371,8 @@ export const onUpdateActivityLog = /* GraphQL */ `
 export const onDeleteActivityLog = /* GraphQL */ `
   subscription OnDeleteActivityLog(
     $filter: ModelSubscriptionActivityLogFilterInput
-    $owner: String
   ) {
-    onDeleteActivityLog(filter: $filter, owner: $owner) {
+    onDeleteActivityLog(filter: $filter) {
       id
       projectID
       project {
@@ -1501,7 +1390,6 @@ export const onDeleteActivityLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskID
@@ -1521,7 +1409,6 @@ export const onDeleteActivityLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       actorID
@@ -1540,27 +1427,23 @@ export const onDeleteActivityLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       action
+      content
       timestamp
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
 `;
 export const onCreateTimeLog = /* GraphQL */ `
-  subscription OnCreateTimeLog(
-    $filter: ModelSubscriptionTimeLogFilterInput
-    $owner: String
-  ) {
-    onCreateTimeLog(filter: $filter, owner: $owner) {
+  subscription OnCreateTimeLog($filter: ModelSubscriptionTimeLogFilterInput) {
+    onCreateTimeLog(filter: $filter) {
       id
       projectID
       project {
@@ -1578,7 +1461,6 @@ export const onCreateTimeLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       userID
@@ -1597,7 +1479,6 @@ export const onCreateTimeLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       logDate
@@ -1608,17 +1489,13 @@ export const onCreateTimeLog = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
 `;
 export const onUpdateTimeLog = /* GraphQL */ `
-  subscription OnUpdateTimeLog(
-    $filter: ModelSubscriptionTimeLogFilterInput
-    $owner: String
-  ) {
-    onUpdateTimeLog(filter: $filter, owner: $owner) {
+  subscription OnUpdateTimeLog($filter: ModelSubscriptionTimeLogFilterInput) {
+    onUpdateTimeLog(filter: $filter) {
       id
       projectID
       project {
@@ -1636,7 +1513,6 @@ export const onUpdateTimeLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       userID
@@ -1655,7 +1531,6 @@ export const onUpdateTimeLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       logDate
@@ -1666,17 +1541,13 @@ export const onUpdateTimeLog = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
 `;
 export const onDeleteTimeLog = /* GraphQL */ `
-  subscription OnDeleteTimeLog(
-    $filter: ModelSubscriptionTimeLogFilterInput
-    $owner: String
-  ) {
-    onDeleteTimeLog(filter: $filter, owner: $owner) {
+  subscription OnDeleteTimeLog($filter: ModelSubscriptionTimeLogFilterInput) {
+    onDeleteTimeLog(filter: $filter) {
       id
       projectID
       project {
@@ -1694,7 +1565,6 @@ export const onDeleteTimeLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       userID
@@ -1713,7 +1583,6 @@ export const onDeleteTimeLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       logDate
@@ -1724,7 +1593,6 @@ export const onDeleteTimeLog = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -1732,9 +1600,8 @@ export const onDeleteTimeLog = /* GraphQL */ `
 export const onCreateProjectAssignees = /* GraphQL */ `
   subscription OnCreateProjectAssignees(
     $filter: ModelSubscriptionProjectAssigneesFilterInput
-    $owner: String
   ) {
-    onCreateProjectAssignees(filter: $filter, owner: $owner) {
+    onCreateProjectAssignees(filter: $filter) {
       id
       userId
       projectId
@@ -1753,7 +1620,6 @@ export const onCreateProjectAssignees = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       project {
@@ -1771,7 +1637,6 @@ export const onCreateProjectAssignees = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       createdAt
@@ -1779,7 +1644,6 @@ export const onCreateProjectAssignees = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -1787,9 +1651,8 @@ export const onCreateProjectAssignees = /* GraphQL */ `
 export const onUpdateProjectAssignees = /* GraphQL */ `
   subscription OnUpdateProjectAssignees(
     $filter: ModelSubscriptionProjectAssigneesFilterInput
-    $owner: String
   ) {
-    onUpdateProjectAssignees(filter: $filter, owner: $owner) {
+    onUpdateProjectAssignees(filter: $filter) {
       id
       userId
       projectId
@@ -1808,7 +1671,6 @@ export const onUpdateProjectAssignees = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       project {
@@ -1826,7 +1688,6 @@ export const onUpdateProjectAssignees = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       createdAt
@@ -1834,7 +1695,6 @@ export const onUpdateProjectAssignees = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -1842,9 +1702,8 @@ export const onUpdateProjectAssignees = /* GraphQL */ `
 export const onDeleteProjectAssignees = /* GraphQL */ `
   subscription OnDeleteProjectAssignees(
     $filter: ModelSubscriptionProjectAssigneesFilterInput
-    $owner: String
   ) {
-    onDeleteProjectAssignees(filter: $filter, owner: $owner) {
+    onDeleteProjectAssignees(filter: $filter) {
       id
       userId
       projectId
@@ -1863,7 +1722,6 @@ export const onDeleteProjectAssignees = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       project {
@@ -1881,7 +1739,6 @@ export const onDeleteProjectAssignees = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       createdAt
@@ -1889,7 +1746,6 @@ export const onDeleteProjectAssignees = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }

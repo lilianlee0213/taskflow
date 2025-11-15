@@ -305,6 +305,7 @@ type EagerActivityLog = {
   readonly actorID: string;
   readonly actor?: User | null;
   readonly action: string;
+  readonly content: string;
   readonly timestamp?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
@@ -323,6 +324,7 @@ type LazyActivityLog = {
   readonly actorID: string;
   readonly actor: AsyncItem<User | undefined>;
   readonly action: string;
+  readonly content: string;
   readonly timestamp?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;

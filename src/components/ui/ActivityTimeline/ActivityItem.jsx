@@ -8,13 +8,12 @@ import {
 	UploadFile,
 } from '@mui/icons-material';
 import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+dayjs.extend(relativeTime);
 
 export default function ActivityItem({log}) {
-	if (!log) return null;
-
-	const eventTime =
-		log.action === 'create' || !log.updatedAt ? log.createdAt : log.updatedAt;
-	const formattedTime = dayjs(eventTime).format('MMM D, YYYY · h:mm A');
+	const eventTime = log?.createdAt;
+	const formattedTime = dayjs(eventTime).fromNow();
 
 	const typeIcons = {
 		create: <AddCircleOutline sx={{color: '#10b981', fontSize: 20}} />,
@@ -24,30 +23,6 @@ export default function ActivityItem({log}) {
 		delete: <DeleteOutline sx={{color: '#ef4444', fontSize: 20}} />,
 		file: <UploadFile sx={{color: '#f59e0b', fontSize: 20}} />,
 	};
-
-	let actionText = '';
-	switch (log.action) {
-		case 'create':
-			actionText = `created a new ${log.type} “${log.targetName}”`;
-			break;
-		case 'add':
-			actionText = `added a ${log.type} “${log.targetName}”`;
-			break;
-		case 'update':
-			actionText = `updated the ${log.type} “${log.targetName}”`;
-			break;
-		case 'delete':
-			actionText = `deleted the ${log.type} “${log.targetName}”`;
-			break;
-		case 'comment':
-			actionText = `commented on ${log.type} “${log.targetName}”`;
-			break;
-		case 'file':
-			actionText = `uploaded “${log.targetName}”`;
-			break;
-		default:
-			actionText = `${log.action} ${log.type} “${log.targetName}”`;
-	}
 
 	return (
 		<Box sx={{display: 'flex', alignItems: 'flex-start', gap: 2}}>
@@ -66,8 +41,8 @@ export default function ActivityItem({log}) {
 				{/* 이름 + 아바타 + 액션 */}
 				<Stack direction="row" alignItems="center" spacing={1}>
 					<Avatar
-						src={log.user?.avatar}
-						alt={log.user?.name}
+						src={log.actor.avatar}
+						alt={log.actor.name}
 						sx={{
 							width: 28,
 							height: 28,
@@ -75,7 +50,7 @@ export default function ActivityItem({log}) {
 							bgcolor: 'var(--color-chip-bg-yellow)',
 							color: 'var(--color-chip-text-yellow)',
 						}}>
-						{!log.user?.avatar && log.user?.name?.[0]}
+						{!log.actor.avatar && log.actor.name}
 					</Avatar>
 
 					<Typography
@@ -85,12 +60,12 @@ export default function ActivityItem({log}) {
 							fontWeight: 500,
 							lineHeight: 1.6,
 						}}>
-						{log.user?.name} {actionText}
+						{log.actor.name} {log.content}
 					</Typography>
 				</Stack>
 
 				{/* 코멘트나 서브 내용 */}
-				{log.content && (
+				{/* {log.content && (
 					<Typography
 						variant="body2"
 						sx={{
@@ -100,7 +75,7 @@ export default function ActivityItem({log}) {
 						}}>
 						“{log.content}”
 					</Typography>
-				)}
+				)} */}
 			</Box>
 		</Box>
 	);

@@ -24,24 +24,36 @@ import {
 import {RiExpandDiagonal2Line} from 'react-icons/ri';
 import {FiEdit} from 'react-icons/fi';
 import InfoRow from '../../components/ui/InfoRow';
-const ProjectOverview = () => {
+const ProjectOverview = ({project}) => {
+	if (!project) return null;
 	return (
 		<div className="px-8">
 			<Typography variant="h2" sx={{fontWeight: 600, mb: 4}}>
-				Marketing Website Revamp
+				{project.projectName}
 			</Typography>
 			<div className="w-full flex flex-col gap-4 mb-8">
 				<InfoRow label="Label" showAddIcon>
-					<Chip
+					{project.projectLabel.map((label, i) => (
+						<Chip
+							key={i}
+							label={label}
+							sx={{
+								color: 'var(--color-chip-text-blue)',
+								bgcolor: 'var(--color-chip-bg-blue)',
+								borderRadius: '4px',
+							}}
+						/>
+					))}
+					{/* <Chip
 						label="Design"
 						sx={{
 							color: 'var(--color-chip-text-blue)',
 							bgcolor: 'var(--color-chip-bg-blue)',
 							borderRadius: '4px',
 						}}
-					/>
+					/> */}
 
-					<Chip
+					{/* <Chip
 						label="Development"
 						sx={{
 							color: 'var(--color-chip-text-green)',
@@ -65,40 +77,30 @@ const ProjectOverview = () => {
 							bgcolor: 'var(--color-chip-bg-red)',
 							borderRadius: '4px',
 						}}
-					/>
+					/> */}
 				</InfoRow>
 				<InfoRow label="Assignees" showAddIcon>
-					<Chip
-						label="Lilian Lee"
-						avatar={
-							<Avatar alt="Lilian Lee" src="/static/images/avatar/1.jpg" />
-						}
-						sx={{
-							color: 'var(--color-text)',
-							bgcolor: 'var(--color-page)',
-							borderRadius: '4px',
-							'& .MuiChip-label': {
-								fontWeight: 500,
-							},
-						}}
-					/>
-					<Chip
-						label="Alex Kim"
-						avatar={<Avatar alt="Alex Kim" src="/static/images/avatar/2.jpg" />}
-						sx={{
-							color: 'var(--color-text)',
-							bgcolor: 'var(--color-page)',
-							borderRadius: '4px',
-							'& .MuiChip-label': {
-								fontSize: '0.85rem',
-								fontWeight: 500,
-							},
-						}}
-					/>
+					{project.assignees.map((user, i) =>
+						user ? (
+							<Chip
+								key={i}
+								label={user.name}
+								avatar={<Avatar alt={user.name} src={user.avatar} />}
+								sx={{
+									color: 'var(--color-text)',
+									bgcolor: 'var(--color-page)',
+									borderRadius: '4px',
+									'& .MuiChip-label': {
+										fontWeight: 500,
+									},
+								}}
+							/>
+						) : null
+					)}
 				</InfoRow>
 				<InfoRow label="Status">
 					<Chip
-						label="Pending"
+						label={project.projectStatus}
 						sx={{
 							color: 'var(--color-chip-text-yellow)',
 							bgcolor: 'var(--color-chip-bg-yellow)',
@@ -124,7 +126,7 @@ const ProjectOverview = () => {
 							}}>
 							<LinearProgress
 								variant="determinate"
-								value={80}
+								value={project.projectProgress}
 								sx={{
 									display: 'block',
 									width: '100%',
@@ -147,7 +149,7 @@ const ProjectOverview = () => {
 								minWidth: '36px',
 								textAlign: 'right',
 							}}>
-							80%
+							{project.projectProgress} %
 						</Typography>
 					</Box>
 				</InfoRow>
@@ -168,9 +170,12 @@ const ProjectOverview = () => {
 				</InfoRow>
 				<InfoRow label="Created By">
 					<Chip
-						label="Kelly Markies"
+						label={`${project.createdBy.firstName} ${project.createdBy.lastName}`}
 						avatar={
-							<Avatar alt="Kelly Markies" src="/static/images/avatar/1.jpg" />
+							<Avatar
+								alt={`${project.createdBy.firstName} ${project.createdBy.lastName}`}
+								src={project.createdBy.avatar}
+							/>
 						}
 						sx={{
 							color: 'var(--color-text)',

@@ -22,7 +22,7 @@ import FormLabelText from '../components/ui/FromLabelText.jsx';
 
 import {Amplify} from 'aws-amplify';
 import awsExports from '../aws-exports';
-import {signIn} from 'aws-amplify/auth';
+import {confirmSignIn, getCurrentUser, signIn} from 'aws-amplify/auth';
 
 import video from '../assets/Taskflow.mp4';
 
@@ -57,9 +57,26 @@ export default function Login() {
 		}
 
 		try {
-			const user = await signIn({username: email, password: pw}); // Cognito login
-			login(user);
-			push(`Signed in as ${user.username}`, 'success');
+			// 1️⃣ 로그인 시도
+			const {isSignedIn, nextStep} = await signIn({
+				username: email,
+				password: pw,
+			});
+
+			if (!isSignedIn) {
+				console.warn('⚠️ Login not complete:', nextStep);
+				setError(true);
+				setErrorMessage('Login not complete. Check MFA or verification steps.');
+				return;
+			}
+
+			// 2️⃣ 로그인된 유저 정보 가져오기
+			const currentUser = await getCurrentUser();
+
+			console.log('✅ Signed in:', currentUser.signInDetails.loginId);
+
+			login(currentUser); // ← 여기에 Cognito 유저 전달
+			push(`Signed in as ${currentUser.signInDetails.loginId}`, 'success');
 			navigate(from, {replace: true});
 			setError(false);
 			setErrorMessage('');

@@ -5,23 +5,23 @@
     "serviceName": "AppSync",
     "defaultAuthType": {
       "mode": "AMAZON_COGNITO_USER_POOLS",
-      "cognitoUserPoolId": "authtaskflow10fd7d16"
+      "cognitoUserPoolId": "authtaskflow5bc84678"
+    },
+    "conflictResolution": {
+      "defaultResolutionStrategy": {
+        "type": "AUTOMERGE"
+      }
     },
     "additionalAuthTypes": [
       {
         "mode": "API_KEY",
         "expirationTime": 365,
-        "apiKeyExpirationDate": "2026-11-13T01:02:48.747Z",
+        "apiKeyExpirationDate": "2026-11-06T02:52:40.818Z",
         "keyDescription": "default"
       },
       {
         "mode": "AWS_IAM"
       }
-    ],
-    "conflictResolution": {
-      "defaultResolutionStrategy": {
-        "type": "OPTIMISTIC_CONCURRENCY"
-      }
-    }
+    ]
   }
 }

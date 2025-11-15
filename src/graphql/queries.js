@@ -22,7 +22,6 @@ export const getTeam = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -43,7 +42,6 @@ export const listTeams = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -74,7 +72,6 @@ export const syncTeams = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -104,7 +101,6 @@ export const getUser = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       createdProjects {
@@ -152,7 +148,6 @@ export const getUser = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -179,7 +174,6 @@ export const listUsers = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -216,7 +210,6 @@ export const syncUsers = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -255,7 +248,6 @@ export const usersByCognitoId = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -294,7 +286,6 @@ export const usersByTeamID = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -317,7 +308,6 @@ export const getProject = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       creatorID
@@ -336,7 +326,6 @@ export const getProject = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       projectName
@@ -380,7 +369,6 @@ export const getProject = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -407,7 +395,6 @@ export const listProjects = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -444,7 +431,6 @@ export const syncProjects = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -483,7 +469,6 @@ export const projectsByTeamID = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -522,7 +507,6 @@ export const projectsByCreatorID = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -551,7 +535,6 @@ export const getTask = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       creatorID
@@ -570,7 +553,6 @@ export const getTask = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       assigneeID
@@ -589,7 +571,6 @@ export const getTask = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskName
@@ -618,7 +599,6 @@ export const getTask = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -646,7 +626,6 @@ export const listTasks = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -684,7 +663,6 @@ export const syncTasks = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -726,7 +704,6 @@ export const tasksByProjectIDAndTaskDueDate = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -766,7 +743,6 @@ export const tasksByCreatorID = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -806,7 +782,6 @@ export const tasksByAssigneeID = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -835,7 +810,6 @@ export const getComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskID
@@ -855,7 +829,6 @@ export const getComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       authorID
@@ -874,7 +847,6 @@ export const getComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       message
@@ -883,7 +855,6 @@ export const getComment = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -906,7 +877,6 @@ export const listComments = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -939,7 +909,6 @@ export const syncComments = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -976,7 +945,6 @@ export const commentsByProjectIDAndCreatedAt = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -1013,7 +981,6 @@ export const commentsByTaskIDAndCreatedAt = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -1048,7 +1015,6 @@ export const commentsByAuthorID = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -1077,7 +1043,6 @@ export const getAttachment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskID
@@ -1097,7 +1062,6 @@ export const getAttachment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       fileName
@@ -1119,7 +1083,6 @@ export const getAttachment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       uploadedAt
@@ -1128,7 +1091,6 @@ export const getAttachment = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -1154,7 +1116,6 @@ export const listAttachments = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -1190,7 +1151,6 @@ export const syncAttachments = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -1230,7 +1190,6 @@ export const attachmentsByProjectIDAndFileName = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -1270,7 +1229,6 @@ export const attachmentsByTaskIDAndFileName = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -1308,7 +1266,6 @@ export const attachmentsByUploaderID = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -1337,7 +1294,6 @@ export const getActivityLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskID
@@ -1357,7 +1313,6 @@ export const getActivityLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       actorID
@@ -1376,17 +1331,16 @@ export const getActivityLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       action
+      content
       timestamp
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -1404,13 +1358,13 @@ export const listActivityLogs = /* GraphQL */ `
         taskID
         actorID
         action
+        content
         timestamp
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -1438,13 +1392,13 @@ export const syncActivityLogs = /* GraphQL */ `
         taskID
         actorID
         action
+        content
         timestamp
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -1476,13 +1430,13 @@ export const activityLogsByProjectIDAndTimestamp = /* GraphQL */ `
         taskID
         actorID
         action
+        content
         timestamp
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -1514,13 +1468,13 @@ export const activityLogsByTaskIDAndTimestamp = /* GraphQL */ `
         taskID
         actorID
         action
+        content
         timestamp
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -1550,13 +1504,13 @@ export const activityLogsByActorID = /* GraphQL */ `
         taskID
         actorID
         action
+        content
         timestamp
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -1585,7 +1539,6 @@ export const getTimeLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       userID
@@ -1604,7 +1557,6 @@ export const getTimeLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       logDate
@@ -1615,7 +1567,6 @@ export const getTimeLog = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -1639,7 +1590,6 @@ export const listTimeLogs = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -1673,7 +1623,6 @@ export const syncTimeLogs = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -1711,7 +1660,6 @@ export const timeLogsByProjectIDAndLogDate = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -1747,7 +1695,6 @@ export const timeLogsByUserID = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -1777,7 +1724,6 @@ export const getProjectAssignees = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       project {
@@ -1795,7 +1741,6 @@ export const getProjectAssignees = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       createdAt
@@ -1803,7 +1748,6 @@ export const getProjectAssignees = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -1828,7 +1772,6 @@ export const listProjectAssignees = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -1859,7 +1802,6 @@ export const syncProjectAssignees = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -1892,7 +1834,6 @@ export const projectAssigneesByUserId = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken
@@ -1925,7 +1866,6 @@ export const projectAssigneesByProjectId = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       nextToken

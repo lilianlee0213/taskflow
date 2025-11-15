@@ -25,7 +25,6 @@ export const createTeam = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -54,7 +53,6 @@ export const updateTeam = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -83,7 +81,6 @@ export const deleteTeam = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -112,7 +109,6 @@ export const createUser = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       createdProjects {
@@ -160,7 +156,6 @@ export const createUser = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -189,7 +184,6 @@ export const updateUser = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       createdProjects {
@@ -237,7 +231,6 @@ export const updateUser = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -266,7 +259,6 @@ export const deleteUser = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       createdProjects {
@@ -314,7 +306,6 @@ export const deleteUser = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -336,7 +327,6 @@ export const createProject = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       creatorID
@@ -355,7 +345,6 @@ export const createProject = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       projectName
@@ -399,7 +388,6 @@ export const createProject = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -421,7 +409,6 @@ export const updateProject = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       creatorID
@@ -440,7 +427,6 @@ export const updateProject = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       projectName
@@ -484,7 +470,6 @@ export const updateProject = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -506,7 +491,6 @@ export const deleteProject = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       creatorID
@@ -525,7 +509,6 @@ export const deleteProject = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       projectName
@@ -569,7 +552,6 @@ export const deleteProject = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -597,7 +579,6 @@ export const createTask = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       creatorID
@@ -616,7 +597,6 @@ export const createTask = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       assigneeID
@@ -635,7 +615,6 @@ export const createTask = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskName
@@ -664,7 +643,6 @@ export const createTask = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -692,7 +670,6 @@ export const updateTask = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       creatorID
@@ -711,7 +688,6 @@ export const updateTask = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       assigneeID
@@ -730,7 +706,6 @@ export const updateTask = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskName
@@ -759,7 +734,6 @@ export const updateTask = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -787,7 +761,6 @@ export const deleteTask = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       creatorID
@@ -806,7 +779,6 @@ export const deleteTask = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       assigneeID
@@ -825,7 +797,6 @@ export const deleteTask = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskName
@@ -854,7 +825,6 @@ export const deleteTask = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -882,7 +852,6 @@ export const createComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskID
@@ -902,7 +871,6 @@ export const createComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       authorID
@@ -921,7 +889,6 @@ export const createComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       message
@@ -930,7 +897,6 @@ export const createComment = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -958,7 +924,6 @@ export const updateComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskID
@@ -978,7 +943,6 @@ export const updateComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       authorID
@@ -997,7 +961,6 @@ export const updateComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       message
@@ -1006,7 +969,6 @@ export const updateComment = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -1034,7 +996,6 @@ export const deleteComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskID
@@ -1054,7 +1015,6 @@ export const deleteComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       authorID
@@ -1073,7 +1033,6 @@ export const deleteComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       message
@@ -1082,7 +1041,6 @@ export const deleteComment = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -1110,7 +1068,6 @@ export const createAttachment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskID
@@ -1130,7 +1087,6 @@ export const createAttachment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       fileName
@@ -1152,7 +1108,6 @@ export const createAttachment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       uploadedAt
@@ -1161,7 +1116,6 @@ export const createAttachment = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -1189,7 +1143,6 @@ export const updateAttachment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskID
@@ -1209,7 +1162,6 @@ export const updateAttachment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       fileName
@@ -1231,7 +1183,6 @@ export const updateAttachment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       uploadedAt
@@ -1240,7 +1191,6 @@ export const updateAttachment = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -1268,7 +1218,6 @@ export const deleteAttachment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskID
@@ -1288,7 +1237,6 @@ export const deleteAttachment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       fileName
@@ -1310,7 +1258,6 @@ export const deleteAttachment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       uploadedAt
@@ -1319,7 +1266,6 @@ export const deleteAttachment = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -1347,7 +1293,6 @@ export const createActivityLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskID
@@ -1367,7 +1312,6 @@ export const createActivityLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       actorID
@@ -1386,17 +1330,16 @@ export const createActivityLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       action
+      content
       timestamp
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -1424,7 +1367,6 @@ export const updateActivityLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskID
@@ -1444,7 +1386,6 @@ export const updateActivityLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       actorID
@@ -1463,17 +1404,16 @@ export const updateActivityLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       action
+      content
       timestamp
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -1501,7 +1441,6 @@ export const deleteActivityLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       taskID
@@ -1521,7 +1460,6 @@ export const deleteActivityLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       actorID
@@ -1540,17 +1478,16 @@ export const deleteActivityLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       action
+      content
       timestamp
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -1578,7 +1515,6 @@ export const createTimeLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       userID
@@ -1597,7 +1533,6 @@ export const createTimeLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       logDate
@@ -1608,7 +1543,6 @@ export const createTimeLog = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -1636,7 +1570,6 @@ export const updateTimeLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       userID
@@ -1655,7 +1588,6 @@ export const updateTimeLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       logDate
@@ -1666,7 +1598,6 @@ export const updateTimeLog = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -1694,7 +1625,6 @@ export const deleteTimeLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       userID
@@ -1713,7 +1643,6 @@ export const deleteTimeLog = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       logDate
@@ -1724,7 +1653,6 @@ export const deleteTimeLog = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -1753,7 +1681,6 @@ export const createProjectAssignees = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       project {
@@ -1771,7 +1698,6 @@ export const createProjectAssignees = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       createdAt
@@ -1779,7 +1705,6 @@ export const createProjectAssignees = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -1808,7 +1733,6 @@ export const updateProjectAssignees = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       project {
@@ -1826,7 +1750,6 @@ export const updateProjectAssignees = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       createdAt
@@ -1834,7 +1757,6 @@ export const updateProjectAssignees = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }
@@ -1863,7 +1785,6 @@ export const deleteProjectAssignees = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       project {
@@ -1881,7 +1802,6 @@ export const deleteProjectAssignees = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        owner
         __typename
       }
       createdAt
@@ -1889,7 +1809,6 @@ export const deleteProjectAssignees = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
       __typename
     }
   }

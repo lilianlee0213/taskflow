@@ -30,6 +30,11 @@ import App from './App.jsx';
 import './index.css';
 import {Amplify} from 'aws-amplify';
 import awsExports from './aws-exports';
+import {fetchAuthSession} from 'aws-amplify/auth';
+import {DataStore} from '@aws-amplify/datastore';
+import {Project} from './models/index.js';
+import {generateClient} from 'aws-amplify/api';
+import {listTeams, listUsers} from './graphql/queries';
 
 Amplify.configure({
 	...awsExports,
@@ -37,6 +42,7 @@ Amplify.configure({
 		authModeStrategyType: 'MULTI_AUTH', // 여러 모드 병용 허용
 	},
 });
+
 function ThemedApp() {
 	const [isDark, setIsDark] = useState(
 		document.documentElement.classList.contains('dark')

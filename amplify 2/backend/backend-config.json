@@ -7,7 +7,7 @@
             "UserPoolId"
           ],
           "category": "auth",
-          "resourceName": "taskflow10fd7d16"
+          "resourceName": "taskflow5bc84678"
         }
       ],
       "output": {
@@ -15,7 +15,7 @@
           "additionalAuthenticationProviders": [
             {
               "apiKeyConfig": {
-                "apiKeyExpirationDate": "2026-11-13T01:02:48.747Z",
+                "apiKeyExpirationDate": "2026-11-06T02:52:40.818Z",
                 "apiKeyExpirationDays": 365,
                 "description": "default"
               },
@@ -28,7 +28,7 @@
           "defaultAuthentication": {
             "authenticationType": "AMAZON_COGNITO_USER_POOLS",
             "userPoolConfig": {
-              "userPoolId": "authtaskflow10fd7d16"
+              "userPoolId": "authtaskflow5bc84678"
             }
           }
         }
@@ -38,7 +38,7 @@
     }
   },
   "auth": {
-    "taskflow10fd7d16": {
+    "taskflow5bc84678": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
