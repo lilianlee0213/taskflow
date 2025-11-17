@@ -1,13 +1,14 @@
 import {PlusIcon} from '@heroicons/react/24/outline';
 import {Tooltip, Typography} from '@mui/material';
 
-const InfoRow = ({label, children, showAddIcon = false, onAdd}) => {
+const InfoRow = ({label, children, showAddIcon = false, onAdd, varient}) => {
 	return (
 		<div className="w-full flex gap-2 justify-start items-center flex-nowrap">
 			<Typography
-				variant="body1"
+				variant={varient}
 				sx={{
-					color: 'text.secondary',
+					color: 'var(--color-text)',
+					opacity: 0.45,
 					fontWeight: 600,
 					width: '120px',
 					flexShrink: 0,

@@ -1,12 +1,12 @@
 import React from 'react';
-import {Box, Typography, TextField} from '@mui/material';
 import CustomTabs from '../../components/ui/CustomTabs';
-import ActivityTimeline from '../../components/ui/ActivityTimeline/ActivityTimeline';
 import CommentSection from '../../components/ui/CommentSection';
+import ActivityTimeline from '../../components/ui/ActivityTimeline/ActivityTimeline';
+import {TextField} from '@mui/material';
 
-export default function ProjectDetails({project}) {
-	if (!project) return null;
-	const {description, comments, activityLogs} = project;
+const TaskDetails = ({task}) => {
+	if (!task) return null;
+	const {taskDescription, comments, activityLogs} = task;
 	const tabs = [
 		{
 			label: 'Description',
@@ -34,7 +34,7 @@ export default function ProjectDetails({project}) {
 								},
 							},
 						}}
-						value={description}
+						value={taskDescription}
 					/>
 				</div>
 			),
@@ -48,10 +48,11 @@ export default function ProjectDetails({project}) {
 			content: <ActivityTimeline logs={activityLogs} />,
 		},
 	];
-
 	return (
 		<div className="px-8 mb-4">
 			<CustomTabs tabs={tabs} />
 		</div>
 	);
-}
+};
+
+export default TaskDetails;

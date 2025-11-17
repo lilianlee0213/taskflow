@@ -24,7 +24,7 @@ import {RiExpandDiagonal2Line} from 'react-icons/ri';
 import {FiEdit} from 'react-icons/fi';
 import ProjectDrawer from '../features/projects/ProjectDrawer';
 import {ProjectTable} from '../features/projects/ProjectTable';
-import {DataStore, Predicates} from '@aws-amplify/datastore';
+import {DataStore} from '@aws-amplify/datastore';
 import {Project, User, ProjectAssignees, Comment, ActivityLog} from '../models';
 const Projects = () => {
 	const [projects, setProjects] = useState([]);
@@ -99,12 +99,15 @@ const Projects = () => {
 						projectDueDate: project.projectDueDate,
 						description: project.description,
 						assignees: users,
-						createdBy: creator,
+						createdBy: {
+							name: `${creator.firstName} ${creator.lastName}`,
+							avatar: creator.avatar,
+						},
 						comments: commentList,
 						activityLogs: activityList,
 					});
 				}
-				console.log(processed);
+				console.log('All Projects:', processed);
 				setProjects(processed);
 			} catch (error) {
 				console.error('error fetching projects', error);
@@ -134,9 +137,6 @@ const Projects = () => {
 							rows={projects}
 							onRowClick={(row) => handleOpenDrawer(row)}
 						/>
-						{/* <Button variant="contained" onClick={handleOpenDrawer}>
-							Click to open
-						</Button> */}
 					</>
 				}
 				headerTitle={'All projects'}

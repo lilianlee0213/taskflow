@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React from 'react';
+import PageTable from '../../components/ui/PageTable';
 import {
 	Box,
 	Avatar,
@@ -7,15 +8,12 @@ import {
 	AvatarGroup,
 	LinearProgress,
 	Typography,
-	CircularProgress,
 } from '@mui/material';
-import PageTable from '../../components/ui/PageTable';
-
-export const ProjectTable = ({rows = [], onRowClick}) => {
+const TaskTable = ({rows = [], onRowClick}) => {
 	const columns = [
 		{
-			field: 'projectName',
-			headerName: 'Project',
+			field: 'taskName',
+			headerName: 'Task',
 			flex: 1,
 			minWidth: 200,
 			renderCell: (params) => (
@@ -27,57 +25,29 @@ export const ProjectTable = ({rows = [], onRowClick}) => {
 			),
 		},
 		{
-			field: 'projectLabel',
-			headerName: 'Label',
-			width: 180,
-			headerAlign: 'center',
-			align: 'center',
+			field: 'project',
+			headerName: 'Project',
+			flex: 1,
+			minWidth: 200,
 			renderCell: (params) => {
-				const labels = params.value || params.row.projectLabel; // ✅ 안전하게 접근
-				if (!labels || labels.length === 0) {
-					return (
-						<Chip
-							label="—"
-							size="small"
-							variant="outlined"
-							sx={{
-								fontSize: '0.75rem',
-								fontWeight: 500,
-								color: 'var(--color-text-muted)',
-								borderColor: 'var(--color-border)',
-							}}
-						/>
-					);
-				}
+				const project = params.value;
 				return (
-					<>
-						{labels.map((label, idx) => (
-							<Chip
-								key={idx}
-								label={label}
-								size="small"
-								sx={{
-									fontSize: '0.75rem',
-									fontWeight: 500,
-									mr: 0.5,
-								}}
-							/>
-						))}
-					</>
+					<div className="cursor-pointer hover:underline transition-all ease-in-out">
+						{project.name}
+					</div>
 				);
 			},
 		},
-
 		{
-			field: 'assignees',
-			headerName: 'Assignees',
-			width: 180,
+			field: 'assignee',
+			headerName: 'Assigneee',
+			width: 100,
 			headerAlign: 'center',
 			align: 'center',
 			renderCell: (params) => {
-				const users = params.value || [];
+				const user = params.value || [];
 
-				if (users.length === 0) {
+				if (user.length === 0) {
 					return (
 						<div className="h-full flex justify-center items-center">
 							<Typography
@@ -115,22 +85,20 @@ export const ProjectTable = ({rows = [], onRowClick}) => {
 									},
 								},
 							}}>
-							{users.map((user, i) => (
-								<Tooltip key={i} title={user.name}>
-									<Avatar
-										src={user.avatar}
-										sx={{width: 28, height: 28, fontSize: 13}}>
-										{user.name[0]}
-									</Avatar>
-								</Tooltip>
-							))}
+							<Tooltip title={user.name}>
+								<Avatar
+									src={user.avatar}
+									sx={{width: 28, height: 28, fontSize: 13}}>
+									{user.name[0]}
+								</Avatar>
+							</Tooltip>
 						</AvatarGroup>
 					</Box>
 				);
 			},
 		},
 		{
-			field: 'projectStatus',
+			field: 'taskStatus',
 			headerName: 'Status',
 			width: 160,
 			headerAlign: 'center',
@@ -183,7 +151,7 @@ export const ProjectTable = ({rows = [], onRowClick}) => {
 			),
 		},
 		{
-			field: 'projectProgress',
+			field: 'taskProgress',
 			headerName: 'Progress',
 			width: 160,
 			headerAlign: 'center',
@@ -227,13 +195,14 @@ export const ProjectTable = ({rows = [], onRowClick}) => {
 			),
 		},
 		{
-			field: 'projectDueDate',
+			field: 'taskDueDate',
 			headerName: 'Due Date',
 			width: 180,
 			headerAlign: 'center',
 			align: 'center',
 		},
 	];
-
 	return <PageTable columns={columns} rows={rows} />;
 };
+
+export default TaskTable;

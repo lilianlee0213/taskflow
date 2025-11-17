@@ -16,24 +16,28 @@ import {
 	LinearProgress,
 	Box,
 } from '@mui/material';
-import {
-	BookmarkIcon,
-	PencilSquareIcon,
-	PlusIcon,
-} from '@heroicons/react/24/outline';
-import {RiExpandDiagonal2Line} from 'react-icons/ri';
-import {FiEdit} from 'react-icons/fi';
+import dayjs from 'dayjs';
 import InfoRow from '../../components/ui/InfoRow';
 const ProjectOverview = ({project}) => {
 	if (!project) return null;
+	const {
+		projectName,
+		projectLabel,
+		assignees,
+		projectStatus,
+		projectProgress,
+		projectDueDate,
+		createdBy,
+	} = project;
+	const dueDate = dayjs(projectDueDate).format('MMMM DD, YYYY');
 	return (
 		<div className="px-8">
 			<Typography variant="h2" sx={{fontWeight: 600, mb: 4}}>
-				{project.projectName}
+				{projectName}
 			</Typography>
 			<div className="w-full flex flex-col gap-4 mb-8">
-				<InfoRow label="Label" showAddIcon>
-					{project.projectLabel.map((label, i) => (
+				<InfoRow label="Label" showAddIcon varient={'body1'}>
+					{projectLabel.map((label, i) => (
 						<Chip
 							key={i}
 							label={label}
@@ -79,8 +83,8 @@ const ProjectOverview = ({project}) => {
 						}}
 					/> */}
 				</InfoRow>
-				<InfoRow label="Assignees" showAddIcon>
-					{project.assignees.map((user, i) =>
+				<InfoRow label="Assigned To" showAddIcon varient={'body1'}>
+					{assignees.map((user, i) =>
 						user ? (
 							<Chip
 								key={i}
@@ -98,9 +102,9 @@ const ProjectOverview = ({project}) => {
 						) : null
 					)}
 				</InfoRow>
-				<InfoRow label="Status">
+				<InfoRow label="Status" varient={'body1'}>
 					<Chip
-						label={project.projectStatus}
+						label={projectStatus}
 						sx={{
 							color: 'var(--color-chip-text-yellow)',
 							bgcolor: 'var(--color-chip-bg-yellow)',
@@ -108,13 +112,13 @@ const ProjectOverview = ({project}) => {
 						}}
 					/>
 				</InfoRow>
-				<InfoRow label="Progress">
+				<InfoRow label="Progress" varient={'body1'}>
 					<Box
 						sx={{
 							display: 'flex',
 							alignItems: 'center',
 							gap: 1,
-							flexWrap: 'nowrap', // 💡 InfoRow의 flex-wrap 덮어쓰기
+							flexWrap: 'nowrap',
 							width: '100%',
 						}}>
 						<Box
@@ -122,11 +126,11 @@ const ProjectOverview = ({project}) => {
 								flexGrow: 1,
 								width: '100%',
 								display: 'block',
-								minWidth: 200, // 💡 fallback width, flex-wrap 방지용
+								minWidth: 200,
 							}}>
 							<LinearProgress
 								variant="determinate"
-								value={project.projectProgress}
+								value={projectProgress}
 								sx={{
 									display: 'block',
 									width: '100%',
@@ -149,34 +153,25 @@ const ProjectOverview = ({project}) => {
 								minWidth: '36px',
 								textAlign: 'right',
 							}}>
-							{project.projectProgress} %
+							{projectProgress} %
 						</Typography>
 					</Box>
 				</InfoRow>
 
-				<InfoRow label="Due Date">
-					<Chip
-						label="October 14, 2025"
+				<InfoRow label="Due Date" varient={'body1'}>
+					<Typography
 						sx={{
-							color: 'var(--color-text)',
-							bgcolor: 'transparent',
-							borderRadius: '4px',
-							'& .MuiChip-label': {
-								fontSize: '0.95rem',
-								fontWeight: 500,
-							},
-						}}
-					/>
+							color: 'var(--color-text) !important',
+							fontSize: '0.95rem !important',
+							fontWeight: '500 !important',
+						}}>
+						{dueDate}
+					</Typography>
 				</InfoRow>
 				<InfoRow label="Created By">
 					<Chip
-						label={`${project.createdBy.firstName} ${project.createdBy.lastName}`}
-						avatar={
-							<Avatar
-								alt={`${project.createdBy.firstName} ${project.createdBy.lastName}`}
-								src={project.createdBy.avatar}
-							/>
-						}
+						label={createdBy.name}
+						avatar={<Avatar alt={createdBy.name} src={createdBy.avatar} />}
 						sx={{
 							color: 'var(--color-text)',
 							bgcolor: 'var(--color-page)',
